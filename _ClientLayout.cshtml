@@ -1,0 +1,522 @@
+﻿
+<!DOCTYPE html>
+
+
+@inject Alphasoft.UnitOfWork.IUnitOfWork _work
+
+@{
+
+    Company isCompanyExist = _work.Companies.FirstOrDefault();
+    Company company = isCompanyExist == null ? new Company() : isCompanyExist;
+
+    List<Menu> menuList = _work.Menus.GetAllActive();
+    List<Menu> menus = menuList.Where(x => x.ParentId == 0).ToList();
+
+    List<Menu> ItemMenue = _work.Menus.GetAll().Where(x=>x.ActionName !="Software" && x.ActionName !="Company" && x.ActionName !="ServicewiseSoftware" && x.ActionName !="ServiceWise").Take(7).OrderBy(x=>x.ActionName).ToList();
+
+    List<Menu> singleMenueList = _work.Menus.GetAll().Where(x => x.Name == "Software").ToList();
+
+    List<Software> softwareList = _work.Softwares.GetAllWithSoftware();
+    List<SoftwareCategory> softwareCategories = _work.SoftwareCategories.GetAll();
+    List<Menu> subMenus = new List<Menu>();
+
+    AboutUs isAboutUs = _work.AboutUs.FirstOrDefault();
+    AboutUs aboutUs = isAboutUs == null ? new AboutUs() : isAboutUs;
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>@company.Name : Best software company in Bangladesh</title>
+
+    <meta name="keywords" content="software, web application, mobile apps, erp solution, accounting inventory, hrms, payroll, crm, procurement, website design, eCommerce management, graphic design, domain, hosting, cctv camera, attendance machine." />
+    <meta name="description" content="We are specialist for software, web application, mobile apps, erp solution, accounting inventory, hrms, payroll, crm, procurement, website design, eCommerce management, graphic design. Also best for domain, hosting, cctv camera & attendance machine." />
+    <meta name="author" content="rrijvy@gmail.com" />
+
+    <!--Theam Mertica Plagin CSS-->
+
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+    <link href="../assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="../assets/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <link href="../assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/porto_7.4.0/img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="~/porto_7.4.0/img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400" rel="stylesheet" type="text/css">
+
+    <link href="~/css/jquery.rateyo.min.css" rel="stylesheet" />
+
+
+
+
+
+    <!-- App css -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- Vendor CSS -->
+    <link href="~/porto_7.4.0/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/animate/animate.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/simple-line-icons/css/simple-line-icons.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/owl.carousel/assets/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/magnific-popup/magnific-popup.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link href="~/porto_7.4.0/css/theme.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/css/theme-elements.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/css/theme-blog.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/css/theme-shop.css" rel="stylesheet" />
+
+    <!-- Current Page CSS -->
+    <link href="~/porto_7.4.0/vendor/rs-plugin/css/settings.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/rs-plugin/css/layers.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/rs-plugin/css/navigation.css" rel="stylesheet" />
+    <link href="~/porto_7.4.0/vendor/circle-flip-slideshow/css/component.css" rel="stylesheet" />
+
+    <!-- Skin CSS -->
+    <link href="~/porto_7.4.0/css/skins/skin-corporate-3.css" rel="stylesheet" />
+
+    <!-- Theme Custom CSS -->
+    <link href="~/porto_7.4.0/css/custom.css" rel="stylesheet" />
+
+
+    <!-- jQuery UI -->
+    <link href="~/lib/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+
+    <!-- toaster -->
+    <link href="~/lib/CodeSeven-toastr-50092cc/build/toastr.min.css" rel="stylesheet" />
+
+    <!-- rx -->
+    <link href="~/css/rx-card.css" rel="stylesheet" />
+    <link href="~/css/rx-form.css" rel="stylesheet" />
+    <link href="~/css/rx-loader.css" rel="stylesheet" />
+    <link href="~/css/custom.css" rel="stylesheet" />
+
+
+
+
+    <!--Zoom Plagin -->
+    <!-- Head Libs -->
+    <script src="~/porto_7.4.0/vendor/modernizr/modernizr.min.js"></script>
+</head>
+<body>
+    <div class="body">
+        <header id="header" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 148, 'stickySetTop': '-148px', 'stickyChangeLogo': true}">
+            <div class="header-body border-color-primary border-top-0 box-shadow-none">
+                <div class="header-top header-top-default border-bottom-0 border-top-0">
+                    <div class="container">
+                        <div id="contactUsFormDiv" class="contactUsFormDiv"></div>
+                        <div class="header-row py-2">
+                            <div class="header-column justify-content-start">
+                                <div class="header-row">
+                                    <nav class="header-nav-top">
+                                        <ul class="nav nav-pills text-uppercase text-2">
+                                            <li class="nav-item nav-item-anim-icon">
+                                                <a class="nav-link pl-0" asp-controller="ClientView" asp-action="AboutUs"><i class="fas fa-angle-right"></i> About Us</a>
+                                            </li>
+                                            <li id="contactUs" class="nav-item nav-item-anim-icon">
+                                                <a class="nav-link" asp-controller="ClietView" asp-action="ContactUs"><i class="fas fa-angle-right"></i> Contact Us</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="header-column justify-content-lg-center" style="display: flex; flex-flow: row nowrap; justify-content: space-between; align-items: center;">
+                                <i class="far fa-clock" style="font-size: 70%;"></i>
+                                <span style="margin-left: 5px; font-size: 80%;">@DateTime.Now.ToString("h:mm tt") - @DateTime.Now.ToString("dd MMMM yyyy")</span>
+                            </div>
+                            <div class="header-column justify-content-end">
+                                <div class="header-row">
+                                    <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean">
+                                        <li class="social-icons-facebook"><a href="@company.Facebook" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li class="social-icons-twitter"><a href="@company.Twitter" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                        <li class="social-icons-linkedin"><a href="@company.LinkedIn" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-container container z-index-2">
+                    <div class="header-row py-2">
+                        <div class="header-column">
+                            <div class="header-row">
+                                <div class="header-logo header-logo-sticky-change">
+                                    <a href="/Home/Index">
+                                        <img class="header-logo-sticky opacity-0 companyLogo" alt="Porto" width="100" height="48" data-sticky-width="89" data-sticky-height="43" data-sticky-top="88" src="~/images/alphalogo.png">
+                                        <img class="header-logo-non-sticky opacity-0 companyLogo" alt="Porto" width="100" height="48" src="@company.Logo">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-column justify-content-end">
+                            <div class="header-row">
+                                <ul class="header-extra-info d-flex align-items-center">
+                                    <li class="d-none d-sm-inline-flex">
+                                        <div class="header-extra-info-text">
+                                            <label>SEND US AN EMAIL</label>
+                                            <strong><a href="mailto:@company.Email" style="text-transform: uppercase;">@company.Email</a></strong>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="header-extra-info-text">
+                                            <label>CALL US NOW</label>
+                                            <strong><a href="tel:@company.Phone">@company.Phone</a></strong>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-nav-bar bg-primary" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'background-color': 'transparent'}" data-sticky-header-style-deactive="{'background-color': '#0088cc'}">
+                    <div class="container">
+                        <div class="header-row">
+                            <div class="header-column">
+                                <div class="header-row justify-content-end">
+                                    <div class="header-nav header-nav-force-light-text justify-content-start py-2 py-lg-3" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'margin-left': '135px'}" data-sticky-header-style-deactive="{'margin-left': '0'}">
+                                        <div id="navigationMenuBar" class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1">
+                                            <nav class="collapse">
+                                                <ul class="nav nav-pills" id="mainNav">
+                                                    @foreach (var menu in menus.OrderBy(x => x.Order))
+                                                    {
+                                                        int index = 0;
+                                                        subMenus = menuList.Where(x => x.ParentId == menu.Id).ToList();
+                                                        double reminder = Math.Ceiling(12.00 % subMenus.Count());
+                                                        double columnNo = 0;
+
+                                                        if (menu.DropdownType == "1")
+                                                        {
+                                                            <li class="dropdown dropdown-full-color dropdown-light dropdown-mega">
+                                                                <a class="dropdown-item dropdown-toggle">
+                                                                    Software
+                                                                    <i class="fas fa-chevron-down"></i>
+                                                                </a>
+                                                                <ul class="dropdown-menu">
+                                                                    <li>
+                                                                        <div class="dropdown-mega-content">
+                                                                            <div class="row">
+                                                                                @foreach (var softwareCategory in softwareCategories.OrderBy(x => x.Order))
+                                                                                {
+                                                                                    var softwareCategoryName = softwareCategory.Name;
+                                                                                    var softwares = softwareList.Where(x => x.SoftwareCategoryId == softwareCategory.Id).ToList();
+                                                                                    ++index;
+
+                                                                                    if (reminder == 0)
+                                                                                    {
+                                                                                        columnNo = 12 / softwareList.GroupBy(x => x.SoftwareCategoryId).Count();
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        columnNo = Math.Floor(12.00 / subMenus.Count());
+                                                                                    }
+
+                                                                                    if (reminder > 0)
+                                                                                    {
+                                                                                        if (index % 2 == 0)
+                                                                                        {
+                                                                                            <div class="col-lg-@columnNo">
+                                                                                                <span class="dropdown-mega-sub-title">@softwareCategoryName</span>
+                                                                                                <ul class="dropdown-mega-sub-nav">
+                                                                                                    @foreach (var item in softwares)
+                                                                                                    {
+                                                                                                        <li><a class="dropdown-item" href="/ClientView/CategoryWiseSoftware/@item.Id">@item.Title</a></li>
+                                                                                                    }
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            --reminder;
+                                                                                            double newColumnNo = columnNo + 1;
+                                                                                            <div class="col-lg-@newColumnNo">
+                                                                                                <span class="dropdown-mega-sub-title">@softwareCategoryName</span>
+                                                                                                <ul class="dropdown-mega-sub-nav">
+                                                                                                    @foreach (var item in softwares)
+                                                                                                    {
+                                                                                                        <li><a class="dropdown-item" href="/ClientView/CategoryWiseSoftware/@item.Id">@item.Title</a></li>
+                                                                                                    }
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        }
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <div class="col-lg-@columnNo">
+                                                                                            <span class="dropdown-mega-sub-title">@softwareCategoryName</span>
+                                                                                            <ul class="dropdown-mega-sub-nav">
+                                                                                                @foreach (var item in softwares)
+                                                                                                {
+                                                                                                    <li><a class="dropdown-item" href="/ClientView/CategoryWiseSoftware/@item.Id">@item.Title</a></li>
+                                                                                                }
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        }
+                                                        else
+                                                        {
+                                                            <li class="dropdown dropdown-full-color dropdown-light">
+                                                                <a class="dropdown-item dropdown-toggle" asp-controller="@menu.ControllerName" asp-action="@menu.ActionName">
+                                                                    @menu.Name
+                                                                </a>
+                                                                @if (subMenus.Count() > 0)
+                                                                {
+                                                                    <ul class="dropdown-menu">
+
+                                                                        @foreach (var subMenu in subMenus.OrderBy(x => x.Order))
+                                                                        {
+                                                                            <li>
+                                                                                <a class="dropdown-item" asp-controller="@subMenu.ControllerName" asp-action="@subMenu.ActionName">
+                                                                                    @subMenu.Name
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+                                                                    </ul>
+                                                                }
+                                                            </li>
+                                                        }
+                                                    }
+
+
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <button class="btn header-btn-collapse-nav my-2" data-toggle="collapse" data-target=".header-nav-main nav">
+                                            <i class="fas fa-bars"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div>
+            @RenderBody()
+        </div>
+        <footer id="footer">
+            <div class="container my-4 py-2">
+                <div style="margin-top:-51px;" class="footer-ribbon">
+                    <span>Get in Touch</span>
+                </div>
+                <div class="row py-4">
+                    <div class="col-lg-4 text-center text-lg-left">
+                        <h5 class="text-4 text-color-light mb-3">SUBSCRIBE NEWS LETTER</h5>
+                        <p class="text-3 mb-0">@Html.Raw(company.ShortDescription)</p>
+                        <p class="text-3 mb-0">Sign up for newsletter today.</p>
+                    </div>
+                    <div class="col-lg-5 text-center text-lg-left px-4 mt-1 mt-lg-3">
+                        <div class="pt-1 pt-lg-3 mt-1">
+                            <div class="alert alert-success d-none" id="newsletterSuccess">
+                                <strong>Success!</strong> You've been added to our email list.
+                            </div>
+                            <div class="alert alert-danger d-none" id="newsletterError"></div>
+                            <form id="newsletterForm" class="mw-100">
+                                <div style="border-radius:25px;">
+                                    <div class="input-group input-group-rounded">
+                                        <input class="form-control form-control-sm bg-light px-4 text-3" placeholder="Email Address..." name="newsletterEmail" id="newsletterEmail" type="text">
+                                        <span class="input-group-append">
+                                            <button class="btn btn-primary  text-color-light text-2 py-3 px-4" type="submit"><strong>SUBSCRIBE!</strong></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 text-center text-lg-left">
+                        <div class="pt-3 mt-1">
+                            <ul class="footer-social-icons social-icons social-icons-clean social-icons-big social-icons-opacity-light social-icons-icon-light mt-0 mt-lg-3">
+                                <li class="social-icons-facebook"><a href="@company.Facebook" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                <li class="social-icons-twitter"><a href="@company.Twitter" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                <li class="social-icons-linkedin"><a href="@company.LinkedIn" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-4 pt-2 pb-5 footer-top-light-border">
+                <div class="row py-4">
+
+                    <div class="col-md-3 text-center text-md-left">
+                        <h5 class="text-4 text-color-light mb-3 mt-4 mt-lg-0">CONTACT INFO</h5>
+                        <p class="text-3 mb-0 text-color-light opacity-7">ADDRESS</p>
+                        <p class="text-3 mb-3">@company.Address</p>
+                        <p class="text-3 mb-0 text-color-light opacity-7">PHONE</p>
+                        <p class="text-3 mb-3">@company.Phone</p>
+                        <p class="text-3 mb-0 text-color-light opacity-7">EMAIL</p>
+                        <p class="text-3 mb-0"><a href="mailto:info@porto.com" class="">@company.Email</a></p>
+                    </div>
+                    <div class="col-md-9 text-center text-md-left">
+
+                        <div class="row">
+                            <div class="col-md-7 col-lg-5 mb-0">
+                                <h5 class="text-4 text-color-light mb-3 mt-4 mt-lg-0">Quick Links</h5>
+                                <div class="row">
+
+                                    @*<div class="col-md-5">
+                                            <p class="mb-1"><a href="/ClientView/AboutUs" class="text-3 link-hover-style-1">About us</a></p>
+                                            <p class="mb-1"><a href="/ClientView/Services" class="text-3 link-hover-style-1">Blogs</a></p>
+                                            <p class="mb-1"><a href="/ClientView/Clients" class="text-3 link-hover-style-1">Clients</a></p>
+                                            <p class="mb-1"><a href="/ClientView/Blogs" class="text-3 link-hover-style-1">Blogs</a></p>
+                                        </div>*@
+
+
+
+
+                                    @foreach (var item in ItemMenue)
+                                    {
+                                        <div class="col-md-5">
+                                            @*<p class="mb-1"><a href="/ClientView/OurTeam" class="text-3 link-hover-style-1">Our Team</a></p>*@
+                                            <p class="mb-1"><a href="/@item.ControllerName/@item.ActionName" class="text-3 link-hover-style-1">@item.Name</a></p>
+
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 col-lg-4">
+                                <h5 class="text-4 text-color-light mb-3 mt-4 mt-lg-0">Our Service</h5>
+                                @foreach (var item in singleMenueList)
+                                {
+                                    <p class="mb-1"><a href="/@item.ControllerName/@item.ActionName" class="text-3 link-hover-style-1">@item.Name</a></p>
+                                }
+                            </div>
+
+
+
+                            <div class="col-lg-3">
+                                <p class="mb-1 mt-lg-3 pt-lg-3"><a href="" class="text-3">Powerful Admin Panel</a></p>
+                                <p class="mb-1"><a href="#" class="text-3 link-hover-style-1">Mobile & Retina Optimized</a></p>
+                            </div>
+                        </div>
+
+                        <div class="row footer-top-light-border mt-4 pt-4">
+
+
+
+                            <div class="col-lg-5 text-center text-md-left">
+                                <p class="font-weight-semibold text-3">&copy; Copyright 2019. @company.Name</p>
+                            </div>
+
+                            <div class="col-lg-3 text-center text-md-left">
+
+                            </div>
+
+                            <div class="col-lg-4 text-center text-md-left">
+                                <p style="margin-left:70px;" class="text-4 mb-0 font-weight-semibold text-color-light opacity-8"><strong>OFFICE HOURS</strong></p>
+                                <p style="margin-left:70px;" class="text-3 mb-0">Time: @aboutUs.BusinessHourseTime</p>
+                                <p style="margin-left:70px;" class="text-3 mb-0">Closed: @aboutUs.ClosedTime</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- Vendor -->
+    <script src="~/porto_7.4.0/vendor/jquery/jquery.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.cookie/jquery.cookie.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/popper/umd/popper.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/common/common.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.validation/jquery.validate.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/isotope/jquery.isotope.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/vide/jquery.vide.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/vivus/vivus.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/porto_7.4.0/js/theme.js"></script>
+
+
+    <!--Zoom Plagin Jquery-->
+    <!-- ClientLayout Page Vendor and Views -->
+
+    <script src="~/porto_7.4.0/vendor/rs-plugin/revolution-addons/typewriter/js/revolution.addon.typewriter.min.js"></script>
+
+
+    <!-- Current Page Vendor and Views -->
+    <script src="~/porto_7.4.0/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="~/porto_7.4.0/vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+    <script src="~/porto_7.4.0/js/views/view.home.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="~/porto_7.4.0/js/views/view.contact.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="~/porto_7.4.0/js/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="~/porto_7.4.0/js/theme.init.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="~/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
+    <!-- toaster -->
+    <script src="~/lib/CodeSeven-toastr-50092cc/build/toastr.min.js"></script>
+
+
+    <!--Mertica plagin Js-->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/metisMenu.min.js"></script>
+    <script src="../assets/js/waves.min.js"></script>
+    <script src="../assets/js/jquery.slimscroll.min.js"></script>
+
+    <!-- Plugins js -->
+    <script src="../assets/plugins/moment/moment.js"></script>
+    <script src="../assets/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="../assets/plugins/select2/select2.min.js"></script>
+    <script src="../assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <script src="../assets/plugins/timepicker/bootstrap-material-datetimepicker.js"></script>
+    <script src="../assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="../assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js"></script>
+
+    <script src="../assets/pages/jquery.forms-advanced.js"></script>
+
+    <!-- App js -->
+    <script src="../assets/js/app.js"></script>
+    <!--Zoom plagin Js-->
+    <script src="~/js/jquery.rateyo.min.js"></script>
+    <!-- rx js -->
+    <script src="~/js/ClientJS/clientLayout.js"></script>
+    <script src="~/js/ObjectifyForm.js"></script>
+
+    @RenderSection("Styles", required: false)
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

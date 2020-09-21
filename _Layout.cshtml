@@ -1,0 +1,505 @@
+﻿@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - Alphasoft</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+        <link href="~/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/lib/fontawesome-5.11.2/css/all.min.css" rel="stylesheet" />
+        <link href="~/lib/fontawesome-5.11.2/css/brands.min.css" rel="stylesheet" />
+        <link href="~/lib/fontawesome-5.11.2/css/solid.min.css" rel="stylesheet" />
+        <link href="~/css/sidebar-menu.css" rel="stylesheet" />
+        <link href="~/lib/DataTables/datatables.min.css" rel="stylesheet" />
+        <link href="~/lib/select2-4.0.10/dist/css/select2.css" rel="stylesheet" />
+        <link href="~/lib/summernote/dist/summernote.css" rel="stylesheet" />
+
+
+
+        <link href="~/css/jquery-confirm.css" rel="stylesheet" />
+         //bootstrap toggle
+        <link href="~/lib/bootstrap-toggle/css/bootstrap-toggle.min.css" rel="stylesheet" />
+
+        <link href="~/css/site.css" rel="stylesheet" />
+        <link href="~/css/custom.css" rel="stylesheet" />
+
+        Zoom Plagin
+        <link href="~/css/jquery.rateyo.min.css" rel="stylesheet" />
+
+
+
+
+
+    </head>
+    <body>
+        <div style="width: 100%; height: 100vh;">
+            <div style="width: 100%; height: 50px; background-color: #212529;">
+                <div style="width: 200px; height: 44px; left: 40px; top: 3px; position: absolute;">
+                    <img src="~/images/alphalogo.png" style="width: 100%; height: 100%;" />
+                </div>
+            </div>
+            <section style="width: 15%; float: left; font-size: 80%; font-weight: 500; height: 100%; background-color: #222d32;">
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#">
+                            <span style="font-size: 110%; font-weight: 800; text-transform: uppercase;">Alphasoft Technology LTD.</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/AdminPanel/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">AdminPanel</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Products/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ServiceCategories/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Service Categories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Services/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Services</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Softwares/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Softwares</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/SoftwaresCategories/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">SoftwaresCategories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Contactus/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Contactus</span>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="/Departments/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Department</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Designations/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Designation</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/ProductCategories/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Product Categories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Menus/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Menus Item</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/SubMenus/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">SubMenus Item</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/OurTeams/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">OurTeam</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/Faqs/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Faq</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Clients/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Clients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Companies/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Companies</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/WhyChooseUs/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Choose Us</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Banners/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Banner Create</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ClientProducts/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">ClientProjects</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Careers/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Careers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Jobs/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Jobs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/AboutUses/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">AboutUs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Blogs/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Blogs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/HostingPlans/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Hosting Plan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Features/Index">
+                            <i class="fab fa-product-hunt"></i>
+                            <span style="margin-left: 8px">Feature </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-share"></i>
+                            <span style="margin-left: 8px">Multilevel</span>
+                            <i class="fa fa-angle-left go-right"></i>
+                        </a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                            <li>
+                                <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left go-right"></i></a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left go-right"></i></a>
+                                        <ul class="sidebar-submenu">
+                                            <li><a href="/Products/Index"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+
+
+            <section style="width: 85%; float: right; margin-top: 20px; font-size: 80%; font-weight: 600;">
+                <div class="body-content">
+
+                    @RenderBody()
+
+                    <hr />
+                    <footer>
+                        <p>&copy; 2019 - Alphasoft</p>
+                    </footer>
+                </div>
+            </section>
+        </div>
+
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
+        <script src="~/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        <script src="~/js/sidebar-menu.js"></script>
+        <script src="~/lib/DataTables/datatables.min.js"></script>
+        <script src="~/lib/select2-4.0.10/dist/js/select2.min.js"></script>
+        <script src="~/lib/summernote/dist/summernote.min.js"></script>
+        <script src="~/js/dateFormatter.js"></script>
+        <script src="~/js/ObjectifyForm.js"></script>
+        <script src="~/js/checkImageSize.js"></script>
+
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        Zoom Plagin Js
+        <script src="~/js/jquery.rateyo.min.js"></script>
+         bootstrap toggle
+        <script src="~/lib/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
+
+        <script src="~/js/jquery-confirm.js"></script>
+        <script src="~/js/demo.js"></script>
+
+        @RenderSection("Styles", required: false)
+        @RenderSection("Scripts", required: false)
+    </body>
+    </html>*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - POS.Web</title>
+
+    <!--Other Lik -->
+    <link href="~/lib/DataTables/datatables.min.css" rel="stylesheet" />
+    <link href="~/lib/select2-4.0.10/dist/css/select2.css" rel="stylesheet" />
+    <link href="~/lib/summernote/dist/summernote.css" rel="stylesheet" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/assets/images/favicon.ico">
+
+    <!-- Plugins css -->
+    <link href="../assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="../assets/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <link href="../assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+
+    <!-- App css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/plugins/animate/animate.css" rel="stylesheet" type="text/css" />
+
+    <!-- dropify -->
+    <link href="~/assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Bootstrap Toggle -->
+    <link href="~/lib/bootstrap-toggle/css/bootstrap-toggle.min.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <!-- Right Sidenav -->
+    <div id="right-sidenav" class="animated" style="display: none;">
+
+    </div>
+    <!----- end right-sidenav--->
+    <!-- Top Bar Start -->
+    <div class="topbar">
+
+        <!-- LOGO -->
+        <div class="topbar-left">
+            <a href="/Home/Index" class="logo">
+                <span>
+                    <img src="~/images/alphalogo.png" alt="logo-large" class="logo-lg" />
+                </span>
+            </a>
+        </div>
+        <!--end logo-->
+        <!-- Navbar -->
+        <nav class="navbar-custom">
+            <ul class="list-unstyled topbar-nav float-right mb-0">
+                <li class="dropdown" style="background-color: #fff;">
+                    <div class="nav-link" id="rightSideBarButton">
+                        <img src="~/images/Pronali-latest.png" style="width: 90px;" />
+                    </div>
+                </li>
+            </ul><!--end topbar-nav-->
+
+            <ul class="list-unstyled topbar-nav mb-0">
+                <li>
+                    <button class="button-menu-mobile nav-link waves-effect waves-light" id="leftSideBarButton">
+                        <i class="dripicons-menu nav-icon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <!-- end navbar-->
+
+    </div>
+    <!-- Top Bar End -->
+
+
+    <div class="page-wrapper">
+
+        <!-- Left Sidenav -->
+        <div class="left-sidenav" id="left-sidenav">
+            <div class="main-icon-menu">
+                <nav class="nav">
+                    <a href="#setting" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="Settings">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M413.967 276.8c1.06-6.235 1.06-13.518 1.06-20.8s-1.06-13.518-1.06-20.8l44.667-34.318c4.26-3.118 5.319-8.317 2.13-13.518L418.215 115.6c-2.129-4.164-8.507-6.235-12.767-4.164l-53.186 20.801c-10.638-8.318-23.394-15.601-36.16-20.801l-7.448-55.117c-1.06-4.154-5.319-8.318-10.638-8.318h-85.098c-5.318 0-9.577 4.164-10.637 8.318l-8.508 55.117c-12.767 5.2-24.464 12.482-36.171 20.801l-53.186-20.801c-5.319-2.071-10.638 0-12.767 4.164L49.1 187.365c-2.119 4.153-1.061 10.399 2.129 13.518L96.97 235.2c0 7.282-1.06 13.518-1.06 20.8s1.06 13.518 1.06 20.8l-44.668 34.318c-4.26 3.118-5.318 8.317-2.13 13.518L92.721 396.4c2.13 4.164 8.508 6.235 12.767 4.164l53.187-20.801c10.637 8.318 23.394 15.601 36.16 20.801l8.508 55.117c1.069 5.2 5.318 8.318 10.637 8.318h85.098c5.319 0 9.578-4.164 10.638-8.318l8.518-55.117c12.757-5.2 24.464-12.482 36.16-20.801l53.187 20.801c5.318 2.071 10.637 0 12.767-4.164l42.549-71.765c2.129-4.153 1.06-10.399-2.13-13.518l-46.8-34.317zm-158.499 52c-41.489 0-74.46-32.235-74.46-72.8s32.971-72.8 74.46-72.8 74.461 32.235 74.461 72.8-32.972 72.8-74.461 72.8z" />
+                        </svg>
+                    </a>
+                    <a href="#bill" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="Bills">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M32 96v256h448V96H32zm160.5 224h-80.4c0-26.6-21.5-48.1-48.1-48.1V192c35.3 0 64-28.7 64-64h64.5c-19.9 23.5-32.5 57.8-32.5 96s12.6 72.5 32.5 96zM448 271.9c-26 0-48 21.5-48 48.1h-80.5c19.9-23.5 32.5-57.8 32.5-96s-12.6-72.5-32.5-96H384c0 35.3 28.7 64 64 64v79.9zM32 384h448v32H32z" />
+                        </svg>
+                    </a>
+                    <a href="#Reservation" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="Bills">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M32 96v256h448V96H32zm160.5 224h-80.4c0-26.6-21.5-48.1-48.1-48.1V192c35.3 0 64-28.7 64-64h64.5c-19.9 23.5-32.5 57.8-32.5 96s12.6 72.5 32.5 96zM448 271.9c-26 0-48 21.5-48 48.1h-80.5c19.9-23.5 32.5-57.8 32.5-96s-12.6-72.5-32.5-96H384c0 35.3 28.7 64 64 64v79.9zM32 384h448v32H32z" />
+                        </svg>
+                    </a>
+
+                    <a href="#menue" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="Bills">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M32 96v256h448V96H32zm160.5 224h-80.4c0-26.6-21.5-48.1-48.1-48.1V192c35.3 0 64-28.7 64-64h64.5c-19.9 23.5-32.5 57.8-32.5 96s12.6 72.5 32.5 96zM448 271.9c-26 0-48 21.5-48 48.1h-80.5c19.9-23.5 32.5-57.8 32.5-96s-12.6-72.5-32.5-96H384c0 35.3 28.7 64 64 64v79.9zM32 384h448v32H32z" />
+                        </svg>
+                    </a>
+
+                </nav><!--end nav-->
+            </div><!--end main-icon-menu-->
+
+            <div class="main-menu-inner">
+                <div class="menu-body slimscroll">
+                    <div id="setting" class="main-icon-menu-pane">
+                        <div class="title-box">
+                            <h6 class="menu-title">Settings</h6>
+                        </div>
+                        <ul class="nav">
+                            <li class="nav-item"><a class="nav-link" href="/Settings/Index"><i class="dripicons-meter"></i>Settings</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/AboutUses/Index"><i class="dripicons-archive"></i>AboutUs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Products/Index"><i class="dripicons-store"></i>Products</a></li>
+
+                            <li class="nav-item"><a class="nav-link" href="/ServiceCategories/Index"><i class="dripicons-store"></i>Service Categorie</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Services/Index"><i class="dripicons-menu"></i>Service</a></li>
+
+                        </ul>
+                    </div>
+                    <div id="bill" class="main-icon-menu-pane">
+                        <div class="title-box">
+                            <h6 class="menu-title">Sub-Menue</h6>
+                        </div>
+                        <ul class="nav">
+                            <li class="nav-item"><a class="nav-link" href="/Contactus/Index"><i class="dripicons-contract"></i>Contact us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/OurTeams/Index"><i class="dripicons-bookmark"></i>Our Team</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Departments/Index"><i class="dripicons-bookmark"></i>Department</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Designations/Index"><i class="dripicons-bookmark"></i>Designations</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Blogs/Index"><i class="dripicons-blog"></i>Blogs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Faqs/Index"><i class="dripicons-meter"></i>Faq</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Jobs/Index"><i class="dripicons-message"></i>Jobs</a></li>
+                        </ul>
+                    </div>
+                    <!--Reservation Section-->
+                    <div id="Reservation" class="main-icon-menu-pane">
+                        <div class="title-box">
+                            <h6 class="menu-title">Bills</h6>
+                        </div>
+                        <ul class="nav">
+                            <li class="nav-item"><a class="nav-link" href="/Reservations/Index"><i class="dripicons-meter"></i>Reservation </a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Tables/Index"><i class="dripicons-meter"></i>Sales</a></li>
+                            <li class="nav-item"><a class="nav-link" href="//"><i class="dripicons-meter"></i>Purchase</a></li>
+
+
+                        </ul>
+                    </div>
+                    <div id="menue" class="main-icon-menu-pane">
+                        <div class="title-box">
+                            <h6 class="menu-title">Bills</h6>
+                        </div>
+                        <ul class="nav">
+                            <li class="nav-item"><a class="nav-link" href="/Menus/Index"><i class="dripicons-menu"></i>Menue </a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Banners/Index"><i class="dripicons-menu"></i>Banner </a></li>
+                        </ul>
+                    </div>
+
+                </div><!--end menu-body-->
+            </div><!-- end main-menu-inner-->
+        </div>
+        <!-- end left-sidenav-->
+        <!-- Page Content-->
+        <div class="page-content">
+
+            <div class="container-fluid">
+                @RenderBody()
+            </div><!-- container -->
+
+            <footer class="footer text-center text-sm-left">
+                &copy; 2019 - POS.Web
+            </footer><!--end footer-->
+        </div>
+        <!-- end page content -->
+    </div>
+
+
+
+    <!-- jQuery  -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/js/metisMenu.min.js"></script>
+    <script src="~/assets/js/waves.min.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.min.js"></script>
+
+    <!-- Plugins js -->
+    <script src="~/assets/plugins/moment/moment.js"></script>
+    <script src="~/assets/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="~/assets/plugins/select2/select2.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <script src="~/assets/plugins/timepicker/bootstrap-material-datetimepicker.js"></script>
+    <script src="~/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="~/assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js"></script>
+
+    <script src="~/assets/pages/jquery.forms-advanced.js"></script>
+
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+
+    <!-- dropify -->
+    <script src="~/assets/plugins/dropify/js/dropify.min.js"></script>
+    <script src="~/assets/pages/jquery.form-upload.init.js"></script>
+
+    <!-- Rx js -->
+    <script src="~/js/percent_calc.js"></script>
+    <script src="~/js/ObjectifyForm.js"></script>
+    <script src="~/js/dateFormatter.js"></script>
+    <!--Others jQuery  -->
+    <script src="~/lib/DataTables/datatables.min.js"></script>
+    <script src="~/lib/select2-4.0.10/dist/js/select2.min.js"></script>
+    <script src="~/lib/summernote/dist/summernote.min.js"></script>
+    <!-- Bootstrap toggle  -->
+
+    <script src="~/lib/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
+    @RenderSection("Styles", required: false)
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
+
