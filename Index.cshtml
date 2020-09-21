@@ -1,0 +1,92 @@
+﻿
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Why-ChooseUs";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Why Chose Us ?</h4>
+        <button id="chose-modalBtn" class="btn btn-primary panel-header-create-btn" data-toggle="modal" data-target="#chose-createModal">Create</button>
+    </div>
+    <div class="panel-body">
+        <table id="choseDatatable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>ShortDescription</th>
+                    <th>Description</th>
+                    <th>Order</th>
+                    <th>IsActive</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="whyChooseusTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="chose-createModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Why ChoseUs?</h4>
+            </div>
+            <div class="modal-body">
+                <div id="choseus-createFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="choses-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-rx" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Why ChoseUs?</h4>
+            </div>
+            <div class="modal-body">
+                <div id="choseus-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-body">
+                <i style="color:#ff3547;margin-top:15px;" class="fa fa-trash fa-3x animated rotateIn"></i>
+                <p style="color:black;font-weight:400;margin-top:20px;font-size:14px;">You want to Delete this data ?</p>
+            </div>
+            <div class="modal-footer">
+                <div style="margin-right:70px;">
+                    <button style="background:#33b5e5;color:white;" class="btn fa fa-close" data-dismiss="modal">Close</button>
+                    <button style="background:#ff3547; color:white;" class="btn waves-effect modaldeleteBtn fa fa-trash" data-dismiss="modal"> Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+    <script src="~/js/ChoseUs/choseus.js"></script>
+
+}

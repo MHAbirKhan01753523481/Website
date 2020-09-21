@@ -1,0 +1,133 @@
+﻿
+@model ChooseUs
+    <form id="whychoseus-editForm" class="createForm" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="fav-preview" class="image-preview" style="display: none;">
+                    <div id="text" style="display: none;"></div>
+                    <img id="imgpreview" src="#" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" type="text" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea class="description" asp-for="Description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ShortDescription"></label>
+                    <textarea class="form-control" maxlength="100" asp-for="ShortDescription" placeholder="maximum length 100 Character"></textarea>
+                    <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Order"></label>
+                    <input asp-for="Order" type="number" class="form-control" />
+                    <span asp-validation-for="Order" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input name="image" type="file" id="image" class="form-control" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IsActive"></label>
+                    <br />
+                    <input asp-for="IsActive" id="isActive_edit" type="hidden" />
+                    <input id="toggle_checkbox_edit" type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+                </div>
+                <div id="alert"></div>
+                <button class="btn btn-success form-control" type="submit">Update</button>
+            </div>
+        </div>
+    </form>
+  
+<script>
+
+    (function () {
+        let checkbox_value = $("#isActive_edit").val();
+
+        if (checkbox_value == true || checkbox_value == "True") {
+            $('#toggle_checkbox_edit').prop('checked', true).change();
+        }
+
+        if (checkbox_value == false || checkbox_value == "False") {
+            $('#toggle_checkbox_edit').prop('checked', false).change();
+        }
+
+
+
+
+        $('#toggle_checkbox_edit').bootstrapToggle({
+            on: 'Enabled',
+            off: 'Disabled',
+            width: 100
+        });
+
+        $('#toggle_checkbox_edit').change(function () {
+            let value = $('#toggle_checkbox_edit')[0].checked;
+
+            if (value == true) {
+                $('#isActive_edit').val(true);
+                $('#isActive_edit').attr('data-val', true);
+            }
+
+            if (value == false) {
+                $('#isActive_edit').val(false);
+                $('#isActive_edit').attr('data-val', false);
+            }
+        });
+
+
+        $(".description").summernote({
+            height: 100
+        });
+        $(".shortDescription").summernote({
+            height: 140
+        });
+
+        $("#whychoseus-editForm").on("submit", function (e) {
+            e.preventDefault();
+            let formData = new FormData();
+
+            let chouseUsEdit = objectifyForm($(this).serializeArray());
+
+            formData.append("image", $("#image")[0].files[0]);
+            for (var key in chouseUsEdit) {
+
+                formData.append(key, chouseUsEdit[key]);
+            }
+            console.log(chouseUsEdit);
+            $.ajax({
+                url: "/WhyChooseUs/Edit",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: formData,
+                success: function (response) {
+                    $("#choseus-editFormDiv").html(response);
+                    dataTable.fnFilter();
+                    $("#choses-editModal").modal('hide');
+                }
+            });
+
+        });
+        $("#image").on("change", function () {
+            let maxWidth = 5000;
+            let maxHeight = 5000;
+            let input = $(this);
+            let imgpreview = $("#imgpreview");
+            let fav_preview = $("#fav-preview");
+            fileOnSelect(input, maxWidth, maxHeight, imgpreview, fav_preview);
+
+        });
+
+    })();
+</script>

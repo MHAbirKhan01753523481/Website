@@ -1,0 +1,167 @@
+﻿@model Product
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <h5 class="card-header bg-primary text-white mt-0">Reservation</h5>
+            <div class="card-body">
+                <form id="product-createForm" class="createForm" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Name"></label>
+                                <input asp-for="Name" type="text" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Quantity"></label>
+                                <input asp-for="Quantity" type="number" class="form-control" />
+                                <span asp-validation-for="Quantity" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="ProductCategoryId"></label>
+                                <select id="productlist" asp-for="ProductCategoryId" class="form-control" style="width: 100%;">
+                                    <option value="0">Select...</option>
+                                </select>
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="WholeSellPrice"></label>
+                                <input asp-for="WholeSellPrice" type="number" step="0.01" class="form-control" />
+                                <span asp-validation-for="WholeSellPrice" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="PurchasePrice"></label>
+                                <input asp-for="PurchasePrice" type="number" step="0.01" class="form-control" />
+                                <span asp-validation-for="PurchasePrice" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Discount"></label>
+                                <input asp-for="Discount" type="number" step="0.01" class="form-control" />
+                                <span asp-validation-for="Discount" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="RetailPrice"></label>
+                                <input asp-for="RetailPrice" type="number" step="0.01" class="form-control" />
+                                <span asp-validation-for="RetailPrice" class="text-danger"></span>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="ReleaseDate"></label>
+                                <input asp-for="ReleaseDate" type="text" class="form-control " id="date-format" />
+                                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="IsPopular"></label>
+                                <br />
+                                <input asp-for="IsPopular" type="hidden" value="true" />
+                                <input id="toggle_checkbox" type="checkbox" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" checked>
+                            </div>
+                            <div id="image-preview" class="image-preview" style="display: none;">
+                                <div id="text" style="display: none;"></div>
+                                <img id="preview" src="#" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="ShortDescription"></label>
+                                <textarea id="shortDescription" asp-for="ShortDescription" maxlength="100" class="form-control" placeholder="Maximum length 100 character"></textarea>
+                                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description"></label>
+                                <textarea id="description" asp-for="Description"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-10 ml-auto text-right">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="reset" class="btn btn-primary">Reset</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div><!--end card-body-->
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <h5 class="card-header bg-primary text-white mt-0">Reservation List</h5>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <table id="productDatatable" class="table table-responsive table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Order</th>
+                                            <th>Category</th>
+                                            <th>Purchase Price</th>
+                                            <th>Retail Price</th>
+                                            <th>Whole Sell Price</th>
+                                            <th>Discount</th>
+                                            <th>Short Description</th>
+                                            <th>Description</th>
+                                            <th>Relise Date</th>
+                                            <th>Is Popular</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script>
+      $("#date-format").bootstrapMaterialDatePicker({
+                weekStart: 0, time: false, format: 'dddd dd MMMMM yyyy'
+                 //  weekStart: 0, date: true, time: true, format: 'MM/dd/yyyy h:mm tt'
+             });
+</script>*@
+
+
+@*<script src="~/js/Products/products.js"></script>*@
+
+
+
