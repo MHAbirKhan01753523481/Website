@@ -1,0 +1,100 @@
+﻿@model ProductsViewModel
+
+<div role="main" class="main shop py-4">
+    <div class="" style="padding: 0; width: 80%; margin: auto">
+        <div class="row">
+            <div class="col-lg-3">
+                <h5 class="font-weight-bold pt-3">Categories</h5>
+                <ul class="nav nav-list flex-column">
+                    @foreach (var item in Model.CategoryProducts)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="/ClientView/CategoryProducts/@item.ProductCategory">@item.ProductCategoryName</a></li>
+                    }
+                </ul>
+                <div class="row mb-5">
+                    <div class="col">
+                        <h5 class="font-weight-bold pt-5">Popular Products</h5>
+                        <ul class="simple-post-list">
+                            @foreach (var item in Model.PopularProducts)
+                            {
+                                <li>
+                                    <div class="post-image">
+                                        <div class="d-block">
+                                            <a href="shop-product-sidebar-left.html">
+                                                <img alt="" width="60" height="60" class="img-fluid" src="@item.Image">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="post-info">
+                                        <a href="shop-product-sidebar-left.html">@item.Name</a>
+                                        <div class="post-meta text-dark font-weight-semibold">
+                                            @item.PurchasePrice
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9" id="productLoadDiv">
+                <div class="masonry-loader masonry-loader-loaded">
+                    <div class="row products product-thumb-info-list" data-plugin-masonry="" data-plugin-options="{'layoutMode': 'fitRows'}" style="position: relative; height: auto;">
+                        @foreach (var item in Model.Products)
+                        {
+                            <div class="col-sm-6 col-lg-4 product product-effect" style="position: absolute; left: 0px; top: 0px;">
+                                <span class="product-thumb-info border-0 product-effect-span" style="background-color: transparent;">
+                                    <a href="/ClientView/Product/@item.Id" class="add-to-cart-product bg-color-primary">
+                                        <span class="text-uppercase text-1">See Details</span>
+                                    </a>
+                                    <a href="/ClientView/Product/@item.Id" style="padding-bottom: 8px; background-color: #fff;">
+                                        <span class="product-thumb-info-image" style="height: 220px; width: 100%;">
+                                            <img alt="" class="img-fluid zoom" src="@item.Image" style="height: 100%; width: 100%; object-fit: contain;">
+                                        </span>
+                                    </a>
+                                    <span class="product-thumb-info-content product-thumb-info-content pl-0 bg-color-light productHoverBorderNone">
+                                        <a href="/ClientView/Product/@item.Id" style="padding: 0px 10px; text-align: center;">
+                                            <h4 class="text-4 text-primary">@item.Name</h4>
+                                            <span class="price">
+                                                <del><span class="amount">@item.RetailPrice</span></del>
+                                                <ins><span class="amount text-dark font-weight-semibold">@item.PurchasePrice</span></ins>
+                                            </span>
+                                        </a>
+                                    </span>
+                                </span>
+                            </div>
+                        }
+                    </div>
+                    <div class="bounce-loader"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script>
+        (function () {
+            $(".nav-link").on("click", function (e) {
+                e.preventDefault();
+
+                $("#productLoadDiv").html(loader);
+
+                let url = $(this).attr("href");
+
+                console.log(url);
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    success: function (response) {
+                        console.log(response);
+                        $("#productLoadDiv").html(response);
+                    }
+                })
+            })
+        })();
+    </script>
+}

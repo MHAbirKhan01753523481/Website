@@ -1,0 +1,358 @@
+﻿
+@model BlogsVM
+
+@{
+    ViewData["Title"] = "BlogsDetails";
+
+    int countBlogId = 0;
+    
+}
+
+<div role="main" class="main">
+
+
+
+
+    <div class="container py-4">
+
+        <div class="row">
+            <div class="col">
+                <div class="blog-posts single-post">
+
+
+                    @if (countBlogId != 0)
+                    {
+
+                       
+                        <article class="post post-large blog-single-post border-0 m-0 p-0">
+
+                            <div class="post-image ml-0">
+                                <a href="/ClientView/Blogs/@Model.BlogsItem.Id">
+                                    <img style="width:100%;height:500px;" src="@Model.BlogsItem.Image" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                                </a>
+                            </div>
+
+                            <div class="post-date ml-0">
+                                <div class="post-date ml-0">
+                                    <span class="day">@Model.BlogsItem.Date.ToString("dd")</span>
+                                    <span class="month">@Model.BlogsItem.Date.ToString("MMM")</span>
+                                    @*<span class="day">@Model.BlogsItem.Date.ToString("hh:mm:ss tt")</span>*@
+                                </div>
+                            </div>
+
+                            <div class="post-content ml-0">
+                                <h2 class="font-weight-bold"><a href="/ClientView/Blogs/@Model.BlogsItem.Id"></a></h2>
+
+                                <div class="post-meta">
+                                    <span><i class="far fa-user"></i>Created By <a href="/ClientView/Blogs/@Model.BlogsItem.Id">@Model.BlogsItem.CreatedBy</a> </span>
+                                    <span><i class="far fa-folder"></i> <a href="/ClientView/Blogs/@Model.BlogsItem.Id">Lifestyle</a>, <a href="#">Design</a> </span>
+                                    <span><i class="far fa-comments"></i> <a href="/ClientView/Blogs/@Model.BlogsItem.Id">@Model.commentCount.Id Comments</a></span>
+                                </div>
+
+                               
+                                <div class="post-block mt-4 pt-2 post-author">
+                                    <h4 class="mb-3">Author</h4>
+                                    <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
+                                        <a href="/ClientView/Blogs/@Model.BlogsItem.Id">
+                                            <img style="height:400px;width:400px;" src="@Model.BlogsItem.Image" alt="">
+                                        </a>
+                                    </div>
+                                    <p><strong class="name"><a href="/ClientView/Blogs/@Model.BlogsItem.Id" class="text-4 pb-2 pt-2 d-block">@Model.BlogsItem.Creator</a></strong></p>
+                                    <p style="text-align:justify;">@Model.BlogsItem.Description</p>
+                                </div>
+
+                                <br />
+
+
+
+                                <div id="comments">
+
+                                    <div class="post-block mt-5 post-comments">
+
+                                        @*<h4 class="mb-3">Comments (@Model.commentCount.Id)</h4>*@
+
+                                        @foreach (var item in Model.blogcomment)
+                                        {
+                                            if (item.BlogId <=20)
+                                            {
+                                                <ul class="comments">
+                                                    <li>
+                                                        <div class="comment">
+                                                            <div class="img-thumbnail img-thumbnail-no-borders d-none d-sm-block">
+                                                                <img class="avatar img-rounded" alt="" src="@Model.BlogsItem.Image">
+                                                            </div>
+                                                            <div class="comment-block">
+                                                                <div class="comment-arrow"></div>
+                                                                <span class="comment-by">
+                                                                    <strong>@item.FullName</strong>
+                                                                    <span class="float-right">
+                                                                        <span id="updateComment" data-id="@item.Id"><a href=""><i class="fas fa-reply btnContactReplay" id="replyComment"></i></a></span>
+                                                                    </span>
+                                                                </span>
+                                                                <p>@item.Comment</p>
+                                                                <br />
+                                                                <span id="commentCreateBtnDiv"><i style="color:red;font-size:25px;" class="far fa-comments"></i></span>
+                                                            </div>
+                                                        </div>
+
+                                                    </li>
+
+
+                                                    @if (item.RName != null || item.REmail != null || item.Reply != null)
+                                                    {
+                                                        <li style="margin-left:20%;width:80%;">
+                                                            <div class="comment">
+                                                                <div class="img-thumbnail img-thumbnail-no-borders d-none d-sm-block">
+                                                                    <img class="avatar img-rounded" alt="" src="@Model.BlogsItem.Image">
+                                                                </div>
+                                                                <div class="comment-block">
+                                                                    <div class="comment-arrow"></div>
+                                                                    <span class="comment-by">
+                                                                        <strong>@item.RName</strong>
+                                                                        <span class="float-right">
+
+                                                                            <span id="updateComment" data-id="@item.Id"><a href=""><i class="fas fa-reply btnContactReplay" id="replyComment"></i></a></span>
+                                                                        </span>
+                                                                    </span>
+                                                                    <p>@item.Reply</p>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            }
+
+
+                                        }
+
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- ==============================Comment Section Form=========================== -->
+
+
+                                <button class="btn btn-primary btnContact">Create Comment</button>
+
+                                <div id="contact-formLoad">
+                                </div>
+
+
+
+                                <!-- ==============================Comment Section Form=========================== -->
+
+                            </div>
+                        </article>
+
+                    }
+                    else
+                    {
+                        <article class="post post-large blog-single-post border-0 m-0 p-0">
+
+                            <div class="post-image ml-0">
+                                <a href="/ClientView/Blogs/@Model.BlogsItem.Id">
+                                    <img style="width:100%;height:500px;" src="@Model.BlogsItem.Image" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                                </a>
+                            </div>
+
+                            <div class="post-date ml-0">
+                                <div class="post-date ml-0">
+                                    <span class="day">@Model.BlogsItem.Date.ToString("dd")</span>
+                                    <span class="month">@Model.BlogsItem.Date.ToString("MMM")</span>
+                                    @*<span class="day">@Model.BlogsItem.Date.ToString("hh:mm:ss tt")</span>*@
+                                </div>
+                            </div>
+
+                            <div class="post-content ml-0">
+                                <h2 class="font-weight-bold"><a href="/ClientView/Blogs/@Model.BlogsItem.Id"></a></h2>
+
+                                <div class="post-meta">
+                                    <span><i class="far fa-user"></i> By <a href="/ClientView/Blogs/@Model.BlogsItem.Id">@Model.BlogsItem.CreatedBy</a> </span>
+                                    <span><i class="far fa-folder"></i> <a href="">Lifestyle</a>, <a href="#">Design</a> </span>
+                                    <span><i class="far fa-comments"></i> <a href=""></a></span>
+                                </div>
+
+                                <p></p>
+
+                                <br />
+                                <br />
+
+                            
+
+                                <div class="post-block mt-4 pt-2 post-author">
+                                    <h4 class="mb-3">Writter  <span><strong style="color:red;">@Model.BlogsItem.Creator</strong></span></h4>
+                                    <div class="img-thumbnail img-thumbnail-no-borders d-block pb-3">
+                                        <a href="/ClientView/Blogs/@Model.BlogsItem.Id">
+                                            <img style="height:400px;width:400px;" src="@Model.BlogsItem.Image" alt="">
+                                        </a>
+                                    </div>
+                                    <p><strong class="name"><a href="" class="text-4 pb-2 pt-2 d-block"></a></strong></p>
+                                    <p style="text-align:justify;">@Html.Raw(Model.BlogsItem.Description)</p>
+                                </div>
+
+                                <br />
+
+
+
+                                <div id="comments">
+
+                                    <div class="post-block mt-5 post-comments">
+
+                                        <h4 class="mb-3">Comments (@ViewBag.comment)</h4>
+
+                                        @foreach (var item in Model.blogcomment)
+                                        {
+
+                                            if (item.BlogId <=20)
+                                            {
+                                                <ul class="comments">
+                                                    <li>
+                                                        <div class="comment">
+                                                            <div class="img-thumbnail img-thumbnail-no-borders d-none d-sm-block">
+                                                                <img class="avatar img-rounded" alt="" src="@Model.BlogsItem.Image">
+                                                            </div>
+                                                            <div class="comment-block">
+                                                                <div class="comment-arrow"></div>
+                                                                <span class="comment-by">
+                                                                    <strong>@item.FullName</strong>
+                                                                    <span class="float-right">
+                                                                        @*<span><a href=""><i class="fas fa-reply btnContactReplay" ></i></a></span>*@
+                                                                        <span id="updateComment" data-id="@item.Id"><a href=""><i class="fas fa-reply btnContactReplay" id="replyComment"></i></a></span>
+                                                                    </span>
+                                                                </span>
+                                                                <p>@item.Comment</p>
+                                                                <br />
+                                                                <span id="commentCreateBtnDiv"><i style="color:red;font-size:25px;" class="far fa-comments"></i></span>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </li>
+                                                    @if (item.RName != null || item.REmail != null || item.Reply != null)
+                                                    {
+                                                        <li style="margin-left:20%;width:80%;">
+                                                            <div class="comment">
+                                                                <div class="img-thumbnail img-thumbnail-no-borders d-none d-sm-block">
+                                                                    <img class="avatar img-rounded" alt="" src="@Model.BlogsItem.Image">
+                                                                </div>
+                                                                <div class="comment-block">
+                                                                    <div class="comment-arrow"></div>
+                                                                    <span class="comment-by">
+                                                                        <strong>@item.RName</strong>
+                                                                        <span class="float-right">
+
+                                                                            <span id="updateComment" data-id="@item.Id"><a href=""><i class="fas fa-reply btnContactReplay" id="replyComment"></i></a></span>
+                                                                        </span>
+                                                                    </span>
+                                                                    <p>@item.Reply</p>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </li>
+                                                    }
+
+
+                                                </ul>
+                                            }
+
+                                        }
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </article>
+                    }
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="reply-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4>Reply</h4>
+            </div>
+            <div class="modal-body">
+                <div id="Reply-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="commentCreate-editModal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Create Comment</h4>
+            </div>
+            <div class="modal-body" style="margin-top:-4px;">
+                <div id="commentCreate-editFormDiv"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script>
+        
+
+        $("body").on("click", "#commentCreateBtnDiv", function (e) {
+            e.preventDefault();
+            $("#commentCreate-editModal").modal('show');
+            $.ajax({
+
+                url: "/ClientView/BlogsCommentView",
+                type: "GET",
+                success: function (response) {
+                    $("#commentCreate-editFormDiv").html(response);
+                }
+            });
+
+        });
+
+       
+
+
+        
+
+        //$(".commentButton").click(function (e) {
+        //    e.preventDefault();
+        //    $("#comments").slideToggle("fast","swing");
+        //});
+
+
+
+        
+
+
+    </script>
+    <script src="~/js/ReplyComment/commentUpdate.js"></script>
+
+
+}
+
+

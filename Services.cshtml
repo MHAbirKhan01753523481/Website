@@ -1,0 +1,484 @@
+﻿@model ServiceVM
+@{
+    int categoryIndex = 0;
+}
+<div role="main" class="main">
+
+    <div class="slider-container rev_slider_wrapper" style="height: 700px;">
+        <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider data-plugin-options="{'delay': 9000, 'gridwidth': 1170, 'gridheight': 700, 'responsiveLevels': [4096,1200,992,500], 'navigation' : {'arrows': { 'enable': false }, 'bullets': {'enable': true, 'style': 'bullets-style-1', 'h_align': 'center', 'v_align': 'bottom', 'space': 7, 'v_offset': 70, 'h_offset': 0}}}">
+            <ul>
+                <li data-transition="fade" class="slide-overlay slide-overlay-level-6">
+                    <img src="~/images/ServiceImage/service1.jpeg"
+                         alt=""
+                         data-bgposition="center center"
+                         data-bgfit="cover"
+                         data-bgrepeat="no-repeat"
+                         class="rev-slidebg">
+
+                    @*<div class="tp-caption"
+                        data-x="center" data-hoffset="['-115','-115','-115','-185']"
+                        data-y="center" data-voffset="['-110','-110','-110','-135']"
+                        data-start="1000"
+                        data-transform_in="x:[-300%];opacity:0;s:500;"
+                        data-transform_idle="opacity:0.2;s:500;"><img src="~/images/ServiceImage/service2.jpg" alt=""></div>*@
+
+                    <div class="tp-caption text-color-light font-weight-normal"
+                         data-x="center"
+                         data-y="center" data-voffset="['-110','-110','-110','-135']"
+                         data-start="700"
+                         data-fontsize="['22','22','22','40']"
+                         data-lineheight="['25','25','25','45']"
+                         data-transform_in="y:[-50%];opacity:0;s:500;">HELLO Customers</div>
+
+                    @*<div class="tp-caption"
+                        data-x="center" data-hoffset="['115','115','115','185']"
+                        data-y="center" data-voffset="['-110','-110','-110','-135']"
+                        data-start="1000"
+                        data-transform_in="x:[300%];opacity:0;s:500;"
+                        data-transform_idle="opacity:0.2;s:500;"><img src="~/images/ServiceImage/service3.jpg" alt=""></div>*@
+
+                    <div class="tp-caption font-weight-extra-bold text-color-light negative-ls-2"
+                         data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                         data-x="center"
+                         data-y="center" data-voffset="['-60','-60','-60','-85']"
+                         data-fontsize="['50','50','50','90']"
+                         data-lineheight="['55','55','55','95']">Every Business For Pronali</div>
+
+                    <div class="tp-caption font-weight-light text-center"
+                         data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                         data-x="center"
+                         data-y="center" data-voffset="['-10','-10','-10','-25']"
+                         data-fontsize="['18','18','18','50']"
+                         data-lineheight="['29','29','29','40']"
+                         style="color: #b5b5b5;">Trusted by over <strong>30,000</strong> satisfied users.</div>
+
+                    <a class="tp-caption btn btn-light-2 btn-outline font-weight-semibold"
+                       data-frames='[{"delay":2500,"speed":2000,"frame":"0","from":"opacity:0;y:50%;","to":"o:1;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                       data-hash
+                       data-hash-offset="85"
+                       href="#main"
+                       data-x="center" data-hoffset="0"
+                       data-y="center" data-voffset="['70','70','70','45']"
+                       data-whitespace="nowrap"
+                       data-fontsize="['15','15','15','33']"
+                       data-paddingtop="['15','15','15','40']"
+                       data-paddingright="['45','45','45','110']"
+                       data-paddingbottom="['15','15','15','40']"
+                       data-paddingleft="['45','45','45','110']">GET STARTED NOW!</a>
+
+                </li>
+                <li class="slide-overlay" data-transition="fade">
+                    <img src="~/images/ServiceImage/service3.jpg"
+                         alt=""
+                         data-bgposition="center center"
+                         data-bgfit="cover"
+                         data-bgrepeat="no-repeat"
+                         class="rev-slidebg">
+
+                    <h1 class="tp-caption font-weight-extra-bold text-color-light negative-ls-2"
+                        data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                        data-x="center"
+                        data-y="center" data-voffset="['-55','-55','-55','-55']"
+                        data-fontsize="['50','50','50','90']"
+                        data-lineheight="['55','55','55','95']"
+                        data-letterspacing="-1">
+                        AWESOME DESIGNS
+                    </h1>
+
+                    <div class="tp-caption font-weight-light text-center"
+                         data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                         data-x="center"
+                         data-y="center" data-voffset="['-5','-5','-5','15']"
+                         data-fontsize="['18','18','18','35']"
+                         data-lineheight="['20','20','20','40']"
+                         style="color: #b5b5b5;">Porto is a huge success in the of one of the world’s largest MarketPlace.</div>
+
+                    <a class="tp-caption btn btn-light-2 btn-outline font-weight-semibold"
+                       data-frames='[{"delay":2500,"speed":2000,"frame":"0","from":"opacity:0;y:50%;","to":"o:1;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                       data-hash
+                       data-hash-offset="85"
+                       href="#main"
+                       data-x="center" data-hoffset="0"
+                       data-y="center" data-voffset="['65','65','65','105']"
+                       data-whitespace="nowrap"
+                       data-fontsize="['15','15','15','33']"
+                       data-paddingtop="['15','15','15','40']"
+                       data-paddingright="['45','45','45','110']"
+                       data-paddingbottom="['15','15','15','40']"
+                       data-paddingleft="['45','45','45','110']">GET STARTED NOW!</a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+
+    <div class="container">
+        <div class="row text-center pt-3">
+            <div class="col-md-10 mx-md-auto">
+                <h1 class="word-rotator slide font-weight-bold text-8 mb-3 appear-animation" data-appear-animation="fadeInUpShorter">
+                    <span>Alphasoft is </span>
+                    <span class="word-rotator-words bg-dark">
+                        <b class="is-visible">incredibly</b>
+                        <b>especially</b>
+                        <b>extremely</b>
+                    </span>
+                    <span> beautiful and fully responsive.</span>
+                </h1>
+                <p class="lead appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum, nulla vel pellentesque consequat, ante nulla hendrerit arcu, ac tincidunt mauris lacus sed leo.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+        <div class="home-concept mt-5">
+            <div class="container">
+
+                <div class="row text-center">
+                    <span class="sun"></span>
+                    <span class="cloud"></span>
+                    <div class="col-lg-2 ml-lg-auto">
+                        <div class="process-image">
+                            <img style="height:145px;width:145px;" src="~/images/sta1.jpg" alt="" />
+                            <strong>Strategy</strong>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="process-image process-image-on-middle">
+                            <img style="height:145px;width:145px;" src="~/images/p1.webp" alt="" />
+                            <strong>Planning</strong>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="process-image">
+                            <img style="height:145px;width:145px;" src="~/images/build2.jpg" alt="" />
+                            <strong>Build</strong>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 ml-lg-auto">
+                        <div class="project-image">
+                            <div id="fcSlideshow" class="fc-slideshow">
+                                <ul class="fc-slides">
+                                    <li><a href="portfolio-single-wide-slider.html"><img style="height:338px;width:338px;" class="img-responsive" src="~/images/w1.jpg" alt="" /></a></li>
+                                    <li><a href="portfolio-single-wide-slider.html"><img style="height:338px;width:338px;" class="img-responsive" src="~/images/w2.jpg" alt="" /></a></li>
+                                    <li><a href="portfolio-single-wide-slider.html"><img style="height:338px;width:338px;" class="img-responsive" src="~/images/sta1.jpg" alt="" /></a></li>
+                                </ul>
+                            </div>
+                            <strong class="our-work">Our Work</strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5 pb-4">
+
+        <div class="row">
+            <div class="col mb-4">
+                <hr class="my-5">
+            </div>
+        </div>
+
+        <div class="row pb-3">
+
+            <div class="col-lg-8">
+                <h2 class="font-weight-normal text-7">Our <strong class="font-weight-extra-bold">Product Service</strong></h2>
+                <div class="row">
+                    @foreach (var item in Model.Services)
+                    {
+                        categoryIndex += 1;
+                        @if (categoryIndex % 2 == 0)
+                        {
+                            <div class="col-sm-6">
+                                <div class="feature-box feature-box-style-2">
+                                    <div class="feature-box-icon">
+                                        <i class="@item.IconClassName text-color-primary"></i>
+                                    </div>
+                                    <div class="feature-box-info">
+                                        <h4 class="font-weight-bold text-4 mb-0">@item.Name</h4>
+                                        <p class="mb-4">@Html.Raw(item.ShortDescription)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-sm-6">
+                                <div class="feature-box feature-box-style-2">
+                                    <div class="feature-box-icon">
+                                        <i class="@item.IconClassName text-color-primary"></i>
+                                    </div>
+                                    <div class="feature-box-info">
+                                        <h4 class="font-weight-bold text-4 mb-0">@item.Name</h4>
+                                        <p class="mb-4">@Html.Raw(item.ShortDescription)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+                <h2 class="font-weight-normal text-6">and more...</h2>
+
+                <div class="accordion accordion-modern" id="accordion">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h4 class="card-title m-0">
+                                <a class="accordion-toggle text-color-dark font-weight-bold" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    <i class="icons icon-diamond text-color-primary"></i>
+                                    Creative Websites
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="collapse show">
+                            <div class="card-body text-2">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blanorem ipsum dolor sit amet, consecte.</p>
+                                <p class="mb-0">Adipiscing elit phasellus blanit ma... <a href="#" class="d-block text-color-dark font-weight-semibold pt-4">read more <i class="fas fa-angle-right position-relative top-1 ml-1"></i></a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h4 class="card-title m-0">
+                                <a class="accordion-toggle text-color-dark font-weight-bold" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                    <i class="icons icon-bubble text-color-primary"></i>
+                                    Contact Forms
+                                </a>
+                            </h4>
+                        </div>
+
+                        @*==================Ajax Call Contract Form===============*@
+
+                        <div id="collapseTwo" class="collapse">
+                            <div class="card-body text-2" id="ContractForm">
+                                <p class="contractFormBtn">Click</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <h4 class="card-title m-0">
+                                <a class="accordion-toggle text-color-dark font-weight-bold" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                    <i class="icons icon-grid text-color-primary"></i>
+                                    Portfolio Pages
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="collapse">
+                            <div class="card-body text-2">
+                                <p class="mb-0">Donec tellus massa, tristique sit amet condimentum vel, facilisis quis sapien.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="solid my-5">
+
+        <div class="row text-center pt-4">
+            <div class="col">
+                <h2 class="word-rotator slide font-weight-bold text-8 mb-2">
+                    <span>We Provide Our Customer </span>
+                    <span class="word-rotator-words bg-primary">
+                        <b class="is-visible">Pronali ERP</b>
+                        <b>Pronali Payroll</b>
+                        <b>Pronali Pos</b>
+                    </span>
+                    <span>Our Project </span>
+                </h2>
+                <h4 class="text-primary lead tall text-4">30,0000 CUSTOMERS IN 100 COUNTRIES MEET OUR CUSTOMERS.</h4>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section class="section section-custom-map appear-animation" data-appear-animation="fadeInUpShorter">
+        <section class="section section-default section-footer">
+            <div class="container">
+                <div class="row mt-5 appear-animation" data-appear-animation="fadeInUpShorter">
+                    <div class="col-lg-6">
+                        <div class="recent-posts mb-5">
+                            <h2 class="font-weight-normal text-6 mb-4"><strong class="font-weight-extra-bold">Latest</strong> Posts</h2>
+
+
+                            <div class="row">
+                                <div class="owl-carousel owl-theme dots-title dots-title-pos-2 mb-0" data-plugin-options="{'items': 1, 'autoHeight': true}">
+
+                                    @foreach (var item in Model.blogs)
+                                    {
+
+                                        <div>
+
+                                            <div class="col">
+                                                <article>
+                                                    <div class="row">
+                                                        <div class="col-auto pr-0">
+                                                            <div style="text-align:justify;" class="date">
+                                                                <span class="month text-1">Month And Date</span>
+                                                                <span class="day font-weight-extra-bold">@item.Date</span>
+                                                                <span class="month text-1">Created By: @item.Creator</span>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col pl-1">
+                                                            <h4 class="text-primary text-4"><a href="blog-post.html">@item.Title</a></h4>
+                                                            <p style="height:180px;text-align:justify;" class="pr-4 mb-0">@Html.Raw(item.Description)</p>
+                                                            <br />
+
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 class="font-weight-normal text-6 mb-4"><strong class="font-weight-extra-bold">What</strong> Client’s Say</h2>
+                        <div class="row">
+                            <div class="owl-carousel owl-theme dots-title dots-title-pos-2 mb-0" data-plugin-options="{'items': 1, 'autoHeight': true}">
+
+                                @foreach (var item in Model.Client)
+                                {
+                                    <div>
+                                        <div class="col">
+                                            <div class="testimonial testimonial-primary">
+                                                <blockquote>
+                                                    <p class="mb-0">@Html.Raw(item.ClientSaysAboutUs)</p>
+                                                </blockquote>
+                                                <div class="testimonial-arrow-down"></div>
+                                                <div class="testimonial-author">
+                                                    <div class="testimonial-author-thumbnail">
+                                                        <img src="@item.Logo" class="rounded-circle" alt="">
+                                                    </div>
+                                                    <p><strong>@item.Name</strong><span></span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+    <section class="call-to-action call-to-action-strong-grey content-align-center call-to-action-in-footer">
+        <div class="container py-5">
+            <div class="row py-3">
+                <div class="col-md-9 col-lg-9">
+                    <div class="call-to-action-content">
+                        <h2 class="font-weight-normal text-7 mb-0">We always<strong> try </strong>to make <strong>awesome</strong> solution!</h2>
+                        <p class="mb-0">And provide you which one suits you best.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-lg-3">
+                    <div class="call-to-action-btn">
+                        <a style="color:white;" herf="" blank="" class="btn btn-dark btn-lg text-3  font-weight-semibold px-4 py-3 mt-5 contactFormTop">Conatct Us Now</a><span class="arrow hlb d-none d-md-block" data-appear-animation="rotateInUpLeft" style="top: -90px; left: 70%;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+@section Scripts{
+
+    <script>
+
+
+        $("body").on("click", ".contactFormTop", function (e) {
+            e.preventDefault();
+
+            $('html,body').animate({ scrollTop: 0 }, 'slow');
+            setTimeout(function () {
+                $.ajax({
+                    url: "/Home/ContactUsFormShow",
+                    type: "GET",
+                    success: function (response) {
+                        $("#contactUsFormDiv").html(response).slideToggle("slow", "swing");
+                      
+                    }
+
+                });
+            }, 1000);
+
+        });
+
+        $(".header-container").click(function () {
+            $("#contactUsFormDiv").hide();
+           
+        });
+
+
+        //const selector = {
+
+        //     contactUsFormDiv: $("#contactUsFormDiv"),
+        //     contactUs: $(".contactFormTop"),
+
+        // };
+        // selector.contactUs.on("click", function (e) {
+        //     e.preventDefault();
+
+        // $('html,body').animate({ scrollTop: 0 }, 'slow');
+        //  setTimeout(function () {
+        //          $.ajax({
+        //         url: "/Home/ContactUsFormShow",
+        //         type: "GET",
+        //         success: function (response) {
+        //             selector.contactUsFormDiv.html(response).slideToggle("fast", "swing");
+        //         }
+        //       });
+
+        //    }, 1500);
+            
+        // });
+
+
+
+        $("body").on("click", ".contractFormBtn", function (e) {
+
+            e.preventDefault();
+
+            $.ajax({
+                url: "/Contactus/CreateView",
+                type: "GET",
+                success: function (response) {
+                    $("#ContractForm").html(response);
+                }
+            });
+        });
+
+
+
+
+
+    </script>
+
+
+}
+

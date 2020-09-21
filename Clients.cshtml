@@ -1,0 +1,133 @@
+﻿@model List<Client>
+
+
+<div role="main" class="main">
+    @*<section class="page-header page-header-classic page-header-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 order-2 order-md-1 align-self-center p-static">
+                    <span class="page-header-title-border visible" style="width: 101.859px;"></span><h1 data-title-border="">OUR Honourable Clients</h1>
+                </div>
+                <div class="col-md-4 order-1 order-md-2 align-self-center">
+                    <ul class="breadcrumb d-block text-md-right">
+                        <li><a href="/Home">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>*@
+    <div class="container py-4">
+        <div class="row">
+            <div class="col">
+                <div class="blog-posts">
+
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-4 col-lg-3">
+                                <article class="post post-medium border-0 pb-0 mb-5 client" data-targetModal="#client_@item.Id" style="background-color: #f7f7f7; cursor: pointer;">
+                                    <div class="post-image">
+
+                                        <img src="@item.Logo" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" style="height: 200px; width: 100%; object-fit: contain; padding: 30px; background-color: transparent;" />
+
+                                    </div>
+
+                                    <div class="post-content">
+
+                                        <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2 text-center" style="border-top: 1px solid #e6e6e6">
+
+                                            <span class="highlighted-word" style="font-weight: 600;">@item.Name</span>
+
+                                        </h2>
+                                        <p>@item.Email</p>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="modal fade" id="client_@item.Id" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4">
+                                                    <img src="@item.Logo" class="img-fluid mb-4" alt="">
+                                                    <ul class="social-icons custom-social-icons text-center">
+                                                        <li class="social-icons-facebook">
+                                                            <a href="http://www.facebook.com/" target="_blank" title="Facebook">
+                                                                <i class="fab fa-facebook-f"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="social-icons-twitter">
+                                                            <a href="http://www.twitter.com/" target="_blank" title="Twitter">
+                                                                <i class="fab fa-twitter"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="social-icons-googleplus">
+                                                            <a href="http://www.plus.google.com/" target="_blank" title="Twitter">
+                                                                <i class="fab fa-google-plus-g" aria-hidden="true"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="social-icons-linkedin">
+                                                            <a href="http://www.linkedin.com/" target="_blank" title="Linkedin">
+                                                                <i class="fab fa-linkedin-in"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-8 col-sm-8">
+                                                    <h2 class="font-weight-semibold text-color-dark mb-2">@item.Name</h2>
+                                                    @if (!string.IsNullOrEmpty(item.Address))
+                                                    {
+                                                        <p class="custom-font-style-1 font-weight-semibold">
+                                                            <span class="highlighted-word text-4" style="font-weight: 600;">Address :</span>
+                                                            @item.Address
+                                                        </p>
+                                                    }
+                                                    @if (!string.IsNullOrEmpty(item.ClientSaysAboutUs))
+                                                    {
+                                                        <p class="text-2 custom-line-height-1">
+                                                            <span class="highlighted-word text-4" style="font-weight: 600;">Client says about us :</span>
+                                                            @Html.Raw(item.ClientSaysAboutUs)
+                                                        </p>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Styles{
+    <style>
+        .client {
+            border-radius: 16px !important;
+            transition: ease 1s;
+        }
+
+            .client:hover {
+                -webkit-box-shadow: 0px 0px 35px -3px rgba(0,0,0,0.72);
+                -moz-box-shadow: 0px 0px 35px -3px rgba(0,0,0,0.72);
+                box-shadow: 0px 0px 35px -3px rgba(0,0,0,0.72);
+            }
+    </style>
+}
+
+@section Scripts{
+    <script>
+        (function () {
+            $(".client").on("click", function (e) {
+                e.preventDefault;
+
+                let modalId = $(this).attr("data-targetModal");
+
+                $(modalId).modal("show");
+            });
+        })();
+    </script>
+}

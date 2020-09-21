@@ -1,0 +1,70 @@
+﻿@model FaqVm
+
+<div role="main" class="main">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-12">
+                <h2 class="font-weight-normal text-center text-7 mb-1">How can we <strong class="font-weight-extra-bold">HELP</strong> you?</h2>
+                <p class="lead"></p>
+
+                <hr class="solid my-5">
+
+                <div class="toggle toggle-primary" data-plugin-toggle>
+                    @foreach (var item in Model.Faqs)
+                    {
+                        <section class="toggle">
+                            <label><span class="highlighted-word text-5">Question</span> : @item.Question</label>
+                            <div class="toggle-content">
+                                <span>@Html.Raw(item.Answer)</span>
+                            </div>
+                        </section>
+                    }
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Styles{
+    <style>
+        .collapse_jquery_h3 {
+            background-color: #08c;
+            border: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 110% !important;
+        }
+
+        .collapse_jquery_p {
+            color: #111;
+            padding: 0;
+            margin: 0;
+        }
+
+            .collapse_jquery_p p {
+                padding: 0;
+                margin: 0;
+            }
+
+        .ui-icon {
+            width: 20px !important;
+            height: 16px !important;
+        }
+    </style>
+}
+
+
+@section Scripts{
+    <script>
+        (function () {
+            $("#accordion").accordion({
+                collapsible: true,
+                active: false
+            });
+        })();
+    </script>
+}

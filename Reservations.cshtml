@@ -1,0 +1,520 @@
+﻿@model ProductsViewModel
+
+@using Alphasoft.Enum
+
+<br />
+
+<div id="refreshData">
+
+</div>
+<form id="reservationDataForm">
+    <div role="main" class="main shop py-4">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Reservation Type</label>
+                                <select asp-for="ReservationType" class="form-control select2" asp-items="@Html.GetEnumSelectList<ReservationType>()">
+                                    <option value="0">---Select</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Date </label>
+                                <input type="text" class="form-control" asp-for="Date" value="@ViewBag.times" id="min-date">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4><strong>Number Of Person</strong></h4>
+                        </div>
+                        <div class="col-md-6">
+                            <h4><strong>Choose Your Time</strong></h4>
+                            <p class="text-right"><strong>Total Table : </strong> <span id="AvailableTable"></span> </p>
+                            
+                            <p class="text-right"><strong>Available Table :<span id="availableTableItem"></span> </strong> <span ></span> </p>
+
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Adult</label>
+                                <input type="number" asp-for="Adult" name="demo0" data-bts-min="0" data-bts-max="100" data-bts-init-val="" data-bts-step="1" data-bts-decimal="0" data-bts-step-interval="100" data-bts-force-step-divisibility="round" data-bts-step-interval-delay="500" data-bts-prefix="" data-bts-postfix="" data-bts-prefix-extra-class="" data-bts-postfix-extra-class="" data-bts-booster="true" data-bts-boostat="10" data-bts-max-boosted-step="false" data-bts-mousewheel="true" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Child</label>
+                                <input type="number" asp-for="Child" name="demo0" data-bts-min="0" data-bts-max="100" data-bts-init-val="" data-bts-step="1" data-bts-decimal="0" data-bts-step-interval="100" data-bts-force-step-divisibility="round" data-bts-step-interval-delay="500" data-bts-prefix="" data-bts-postfix="" data-bts-prefix-extra-class="" data-bts-postfix-extra-class="" data-bts-booster="true" data-bts-boostat="10" data-bts-max-boosted-step="false" data-bts-mousewheel="true" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Children</label>
+                                <div class="form-group">
+
+                                    <input type="number" name="demo0" asp-for="Children" data-bts-min="0" data-bts-max="100" data-bts-init-val="" data-bts-step="1" data-bts-decimal="0" data-bts-step-interval="100" data-bts-force-step-divisibility="round" data-bts-step-interval-delay="500" data-bts-prefix="" data-bts-postfix="" data-bts-prefix-extra-class="" data-bts-postfix-extra-class="" data-bts-booster="true" data-bts-boostat="10" data-bts-max-boosted-step="false" data-bts-mousewheel="true" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Start Date</label>
+                                <input type="text" class="form-control" placeholder="Start date" id="date-start">
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>End Date</label>
+                                <input type="text" class="form-control timepicker " id="date-end" placeholder="End date" >
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Table Booking</label>
+                                <input type="number" class="form-control " asp-for="OrderSeat" />
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <aside class="sidebar">
+                                <h5 class="font-weight-bold pt-3">Categories</h5>
+                                <ul class="nav nav-list flex-column">
+                                    <li class="nav-item"><a class="nav-link" href="/ClientView/Reservations">Show all</a></li>
+                                    @foreach (var item in Model.CategoryProducts)
+                                    {
+                                        <li class="nav-item "><a class="nav-link productCategoryForDiv" href="/ClientView/GetReservation/@item.ProductCategory">@item.ProductCategoryName</a></li>
+                                    }
+                                </ul>
+                                <div class="row mb-5">
+
+                                </div>
+
+
+                            </aside>
+                        </div>
+                        <div class="col-lg-9">
+
+                            <div class="masonry-loader masonry-loader-showing" id="categoryproductLoadDiv">
+                                <div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
+
+                                    @foreach (var item in Model.Products)
+                                    {
+                                        @*<span class="CardItems" ProductId="@item.Id" PrdName="@item.Name" PrdPrice="@item.PurchasePrice" Images="@item.Image"></span>*@
+
+                                        <div class="col-sm-6 col-lg-4 product">
+
+                                            <div class="card">
+                                                <div class="card-body">
+
+                                                    <a>
+                                                        <span style="background-color:orangered;" class="onsale">Sale!</span>
+                                                    </a>
+                                                    <span>
+                                                        @*<a class="CardItems add-to-cart-product bg-color-primary " ProductId="@item.Id" data-name="@item.Name" data-price="@item.PurchasePrice" data-image="@Model.singleblogs.Image">
+                                                                <span class="text-uppercase text-1">Add to Cart</span>
+                                                            </a>*@
+                                                        <a>
+                                                            <span class="product-thumb-info-image">
+                                                                <img class="img-fluid" src="@Model.singleblogs.Image">
+                                                            </span>
+                                                        </a>
+
+
+                                                        <h4 class="text-4 text-primary" data-name="@item.Name">@item.Name</h4>
+                                                        <span class="price">
+                                                            @*<del><span class="amount" data-price="@item.PurchasePrice">@item.PurchasePrice</span></del>*@
+                                                            <ins><span class="amount text-dark font-weight-semibold">$ @item.PurchasePrice</span></ins>
+                                                        </span>
+                                                        <div>
+
+                                                            <input class="form-control" id="@item.Id" ProductId="@item.Id" PrdName="@item.Name" PrdPrice="@item.PurchasePrice" Images="@Model.singleblogs.Image" type="number" value="0" />
+                                                            @* Modifies *@
+
+                                                        </div>
+
+                                                        <br />
+                                                        <button style="width:100%;" ProductId="@item.Id" PrdName="@item.Name" PrdPrice="@item.PurchasePrice" Images="@Model.singleblogs.Image" type="button" class="CardItems btn btn-outline-danger "><i class="fas fa-cart-plus"></i>Add To Card </button>
+
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    }
+
+                                </div>
+                                @*<div class="row">
+                                        <div class="col">
+                                            <ul class="pagination float-right">
+                                                <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
+                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <a class="page-link" href="#"><i class="fas fa-angle-right"></i></a>
+                                            </ul>
+                                        </div>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="container">
+
+            <!-- end page title end breadcrumb -->
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Card Count-->
+
+                            <div class="row">
+                                <div class="col">
+                                    <p type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart">Item <span class="total-count" id="totaCountItem"></span></p>
+                                    <p class="clear-cart btn btn-danger" id="clearCardTotal">Clear Cart</p>
+                                </div>
+                            </div>
+
+                            <h4 class="header-title mt-0 mb-3">Order Summary</h4>
+
+
+                            <div class="table-responsive shopping-cart orderSummary">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Image</th>
+                                            <th>Quantity</th>
+                                            <th></th>
+                                            <th>SubTotal</th>
+
+                                            <th></th>
+                                            <th></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="Mydata">
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                            <div>
+                                <hr />
+                                <p style="font-size:14px;margin-left:340px;color:black;" class=""><strong>Total Price:</strong> <span class="" id="TotalAmount"></span></p>
+                            </div>
+
+
+                            @*<div class="table-responsive shopping-cart orderSummary">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Image</th>
+                                                <th>Quantity</th>
+                                                <th>Price</th>
+                                                <th>SubTotal</th>
+                                                <th>Cancel</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="show-cart" id="Mydata">
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+                                <div>
+                                    <hr />
+                                    <p style="font-size:14px;margin-left:340px;color:black;" class="totalCart"><strong>Total Price:</strong> <span class="total-cart"></span></p>
+                                </div>*@
+
+                        </div><!--end total-payment-->
+                    </div><!--end card-body-->
+                </div><!--end card-->
+
+                <div class="col-lg-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title mt-0 mb-3">Delivery Address</h4>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>First Name <small class="text-danger font-13">*</small></label>
+                                        <input type="text" class="form-control" asp-for="FirstName" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Last Name <small class="text-danger font-13">*</small></label>
+                                        <input type="text" class="form-control" asp-for="LastName" required="">
+                                    </div>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Delivery Address <small class="text-danger font-13">*</small></label>
+                                        <input type="text" class="form-control" asp-for="DeliveryAddress" required="">
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Address <small class="text-danger font-13">*</small></label>
+                                        <input type="text" class="form-control" asp-for="Address" required="">
+                                    </div>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>City <small class="text-danger font-13">*</small></label>
+                                        <input type="text" asp-for="City" class="form-control" required="">
+                                    </div>
+                                </div><!--end col-->
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-form-label pt-0">Country <small class="text-danger font-13">*</small></label>
+                                        <select class="form-control select2" asp-for="Country">
+                                            <option>Select</option>
+                                            <option>BanglaDesh</option>
+                                            <option>India</option>
+
+                                        </select>
+                                    </div>
+                                </div> <!--end col-->
+                            </div><!--end row-->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Zip code <small class="text-danger font-13">*</small></label>
+                                        <input type="text" class="form-control" asp-for="ZipCode" required="">
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Email Address <small class="text-danger font-13">*</small></label>
+                                        <input type="email" class="form-control" asp-for="Email" required="">
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Mobile No <small class="text-danger font-13">*</small></label>
+                                        <input type="text" class="form-control" asp-for="Mobile" required="">
+                                    </div>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                            <div class="row">
+                                <!--end col--><div class="col-md-6">
+                                    <div class="form-group">
+                                        @*<button type="submit" class="btn btn-primary text-left" id="confrimButton">Checkout</button>*@
+                                        <input type="button" id="confrimButton" class="btn btn-primary text-left" value="Checkout" />
+                                    </div>
+                                </div>
+                            </div><!--end row-->
+
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+
+                </div> <!--end billing-nav-->
+            </div><!--end card-body-->
+        </div><!--end card-body-->
+    </div><!--end card-body-->
+</form><!--end form-->
+@*<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="show-cart table">
+                    </table>
+                    <div>Total price: $<span class="total-cart"></span></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Order now</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+<div class="modal fade" id="addtoCardModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="AddToCardForDiv">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- App css -->
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/icons.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="~/lib/select2-4.0.10/dist/css/select2.css" rel="stylesheet" />
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/icons.css" rel="stylesheet" type="text/css" />
+@*<link href="../assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />*@
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+
+@section Scripts{
+
+    <script src="../assets/plugins/timepicker/bootstrap-material-datetimepicker.js"></script>
+    <!-- jQuery  -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/metisMenu.min.js"></script>
+    <script src="../assets/js/waves.min.js"></script>
+    <script src="../assets/js/jquery.slimscroll.min.js"></script>
+
+
+    <script src="../assets/js/app.js"></script>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+
+
+            // $("#min-date").bootstrapMaterialDatePicker({
+            //    weekStart: 0, time: false, format: 'dddd dd MMMMM yyyy'
+            //});
+
+            
+
+             $("#date-end").bootstrapMaterialDatePicker({
+                weekStart: 0, time: false, format: 'dddd dd MMMMM yyyy'
+            });
+            $('#date-start').bootstrapMaterialDatePicker({
+                weekStart: 0, time: false, format: 'dddd dd MMMMM yyyy'
+            });
+
+            //$('.timepicker').DatePicker({
+            //    weekStart: 0, time: false, format: 'dddd dd MMMMM yyyy'
+            //});
+            //$('.timepicker').bootstrapMaterialDatePicker({
+            //    weekStart: 0, time: false, format: 'DD MMMM YYYY'
+            //});
+
+        });
+        //new Card({
+        //    form: document.querySelector('.bill-form'),
+        //    container: '.card-wrapper'
+        //});
+
+
+
+
+
+        (function () {
+
+
+
+            //Popup Reservation///
+
+            //$("body").on("click", ".CardItems", function (e) {
+
+            //    e.preventDefault();
+
+            //    $("#addtoCardModal").modal('show');
+            //    $.ajax({
+            //        url: "/ClientView/ReservationPartial",
+            //        type: "GET",
+            //        success: function (response) {
+
+            //            $("#AddToCardForDiv").html(response);
+            //        }
+
+            //    });
+
+            //});
+
+
+
+
+            $(".productCategoryForDiv").on("click", function (e) {
+                e.preventDefault();
+
+                $("#categoryproductLoadDiv").html(loader);
+
+                let url = $(this).attr("href");
+
+                console.log(url);
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    success: function (response) {
+                        $("#categoryproductLoadDiv").html(response);
+                    }
+                })
+            })
+        })();
+
+
+
+
+
+
+
+
+    </script>
+    <script src="~/js/CustomJs.js"></script>
+    @*<script src="~/js/Card/card.js"></script>*@
+}

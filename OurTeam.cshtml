@@ -1,0 +1,79 @@
+﻿@model OurTeamVM
+
+<div role="main" class="main">
+
+    @*<section class="page-header page-header-classic page-header-sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 order-2 order-md-1 align-self-center p-static">
+                    <h1 data-title-border>OUR TEAM</h1>
+                </div>
+                <div class="col-md-4 order-1 order-md-2 align-self-center">
+                    <ul class="breadcrumb d-block text-md-right">
+                        <li><a href="/Home">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>*@
+
+    <div class="container py-4">
+
+        <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="team" data-option-key="filter">
+            <li class="nav-item active" data-option-value="*"><a class="nav-link text-1 text-uppercase active" href="#">Show All</a></li>
+            @foreach (var item in Model.Teams.GroupBy(x => x.DepartmentId))
+            {
+                var departmentName = item.Select(x => x.Department.Name).FirstOrDefault();
+                <li class="nav-item" data-option-value=".@departmentName.Split(" ")[0]"><a class="nav-link text-1 text-uppercase" href="#">@departmentName</a></li>
+            }
+        </ul>
+
+        <div class="sort-destination-loader sort-destination-loader-showing mt-4 pt-2">
+            <div class="row team-list sort-destination" data-sort-id="team">
+                @foreach (var item in Model.Teams)
+                {
+                    //string image = string.IsNullOrEmpty(item.Image) ? "/images/default-avater.jpg" : item.Image;
+                    <div class="col-12 col-sm-6 col-lg-3 isotope-item @item.Department.Name.Split(" ")[0]">
+                        <span class="thumb-info thumb-info-hide-wrapper-bg mb-4">
+                            <span class="thumb-info-wrapper">
+                                <a href="/ClientView/TeamViewDetails/@item.Id">
+                                    <img src="@item.Image" class="img-fluid" alt="" style="height: 250px;">
+                                    <img src="" />
+                                    <span class="thumb-info-title">
+                                        <span class="thumb-info-inner">@item.Name</span>
+                                        <span class="thumb-info-type">@item.Department.Name</span>
+                                    </span>
+                                </a>
+                            </span>
+
+
+
+                            <span class="thumb-info-caption">
+                                <span class="thumb-info-social-icons mb-4 mt-3">
+                                    @if (item.Facebook != null)
+                                    {
+                                        <a target="_blank" href="@item.Facebook"><i class="fab fa-facebook-f"></i><span>Facebook</span></a>
+                                    }
+
+                                    @if (item.Twitter != null)
+                                    {
+                                        <a href="@item.Twitter"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+                                    }
+
+                                    @if (item.LinkedIn != null)
+                                    {
+                                        <a href="@item.LinkedIn"><i class="fab fa-linkedin-in"></i><span>Linkedin</span></a>
+                                    }
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+
+                }
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

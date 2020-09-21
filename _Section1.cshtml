@@ -1,0 +1,170 @@
+﻿@model List<ChooseUs>
+
+@{ 
+
+}
+
+@*<div style="padding: 0; width: 80%; margin: auto">
+    <h2 class="font-weight-normal text-color-dark text-center text-7 pb-1 pt-1">Why <strong class="font-weight-extra-bold">Choose</strong> Us</h2>
+    <div class="row text-center text-md-left">
+        <div class="owl-carousel owl-theme mb-0 pt-5">
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    char[] shortDescriptionArray = item.ShortDescription.ToCharArray();
+
+                    if (shortDescriptionArray.Length > 60)
+                    {
+                        string shortDescription = string.Empty;
+
+                        for (int i = 0; i < 60; i++)
+                        {
+                            shortDescription += shortDescriptionArray[i];
+                        }
+
+                        <div class="col-md-12 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
+                            <div class="row justify-content-center justify-content-md-start">
+                                <div  class="col-4">
+                                    <div style="height:150px;width:100px;">
+                                        <img style="height:100%;width:100%;" class="img-fluid" src="@item.Image" alt="">
+                                    </div>
+                                       
+                                </div>
+                                <div class="col-lg-8">
+                                    <h2 class="font-weight-bold text-5 line-height-5 mb-1">@Html.Raw(item.Title)</h2>
+                                    <p class="mb-0">@item.ShortDescription</p>
+                                    <a href="#">more . . .</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-12 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
+                            <div class="row justify-content-center justify-content-md-start">
+                                <div class="col-4">
+                                    <img style="height:192px;width:192px;" class="img-fluid mb-5" src="@item.Image" alt="">
+                                </div>
+                                <div class="col-lg-8">
+                                    <h2 class="font-weight-bold text-5 line-height-5 mb-1">@Html.Raw(item.Title)</h2>
+                                    <p class="mb-0">@item.ShortDescription</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>*@@*<div style="padding: 0; width: 80%; margin: auto">
+    <h2 class="font-weight-normal text-color-dark text-center text-7 pb-1 pt-1">Why <strong class="font-weight-extra-bold">Choose</strong> Us</h2>
+    <div class="row text-center text-md-left">
+        <div class="owl-carousel owl-theme mb-0 pt-5">
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    char[] shortDescriptionArray = item.ShortDescription.ToCharArray();
+
+                    if (shortDescriptionArray.Length > 60)
+                    {
+                        string shortDescription = string.Empty;
+
+                        for (int i = 0; i < 60; i++)
+                        {
+                            shortDescription += shortDescriptionArray[i];
+                        }
+
+                        <div class="col-md-12 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
+                            <div class="row justify-content-center justify-content-md-start">
+                                <div  class="col-4">
+                                    <div style="height:150px;width:100px;">
+                                        <img style="height:100%;width:100%;" class="img-fluid" src="@item.Image" alt="">
+                                    </div>
+                                       
+                                </div>
+                                <div class="col-lg-8">
+                                    <h2 class="font-weight-bold text-5 line-height-5 mb-1">@Html.Raw(item.Title)</h2>
+                                    <p class="mb-0">@item.ShortDescription</p>
+                                    <a href="#">more . . .</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-12 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
+                            <div class="row justify-content-center justify-content-md-start">
+                                <div class="col-4">
+                                    <img style="height:192px;width:192px;" class="img-fluid mb-5" src="@item.Image" alt="">
+                                </div>
+                                <div class="col-lg-8">
+                                    <h2 class="font-weight-bold text-5 line-height-5 mb-1">@Html.Raw(item.Title)</h2>
+                                    <p class="mb-0">@item.ShortDescription</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>*@
+
+
+
+@*<div class="container" style="padding:0;">
+    <h2 class="font-weight-normal text-color-dark text-center text-7 pb-1 pt-1">Why <strong class="font-weight-extra-bold">Choose</strong> Us</h2>
+    <div class="row text-center text-md-left">
+        <div class="owl-carousel owl-theme mb-0 pt-5">
+          
+                @foreach (var item in Model)
+                {
+                 
+
+                        <div class="col-md-12 mb-4 mb-md-0 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
+                            <div class="row justify-content-center justify-content-md-start">
+                                <div class="col-4">
+                                    <div style="height:150px;width:100px;">
+                                        <img style="height:100%;width:100%;" class="img-fluid" src="@item.Image" alt="">
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-8">
+                                    <h2 class="font-weight-bold text-5 line-height-5 mb-1">@Html.Raw(item.Title)</h2>
+                                    <p class="mb-0">@item.ShortDescription</p>
+                                    <a href="#">more . . .</a>
+                                </div>
+                            </div>
+                        </div>
+               
+                       
+                    }
+                
+          
+        </div>
+    </div>
+</div>*@
+
+
+
+<style>
+    .appear-animation {
+        opacity: 1 !important;
+    }
+</style>
+
+<script>
+    var owl = $('.owl-carousel');
+
+    owl.owlCarousel({
+        items: 3,
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        dots: false
+    });
+</script>

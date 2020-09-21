@@ -1,0 +1,248 @@
+﻿@model SoftwareViewModel
+@{
+    ViewData["Title"] = "Softwares";
+    int SoftwareImageDiv = 0;
+    int SoftwareFeaturesIndex = 0;
+
+}
+
+<section class="page-header page-header-modern page-header-background  py-0 overlay overlay-color-light overlay-show overlay-op-8">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 order-2 order-sm-1 align-self-center p-static">
+
+                <div class="overflow-hidden pb-2">
+                    <h1 style="color:black;" class="text-10 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Introducing the new <strong>Software</strong></h1>
+                </div>
+                <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                    <span style="color:black;" class="sub-title text-4 mt-4">@Model.SoftwareImage.Title</span>
+                </div>
+                <div class="appear-animation d-inline-block" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+                    <a href="#" class="btn btn-modern btn-dark mt-4">Buy Now <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                <div class="appear-animation d-inline-block" data-appear-animation="rotateInUpRight" data-appear-animation-delay="500">
+                    <span class="arrow hlt" style="top: 40px;"></span>
+                </div>
+            </div>
+            <div class="col-sm-7 order-1 order-sm-2 align-items-end justify-content-end d-flex pt-5">
+                <div style="min-height: 350px;" class="overflow-hidden">
+
+                    <img alt="" style="width:400px;height:360px;" src="@Model.SoftwareImage.Image" class="img-fluid appear-animation" data-appear-animation="slideInUp" data-appear-animation-delay="600" data-appear-animation-duration="1s">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container py-5 my-4">
+    <div class="row text-center py-3">
+        <div class="col-md-10 mx-md-auto">
+            <h1 class="word-rotator slide font-weight-bold text-8 mb-3 appear-animation" data-appear-animation="fadeInUpShorter">
+                <span>Alphasoft  is </span>
+                <span class="word-rotator-words bg-primary">
+                    <b class="is-visible">incredibly</b>
+                    <b>especially</b>
+                    <b>extremely</b>
+                </span>
+                <span>software supporter and seller</span>
+            </h1>
+            <p class="lead appear-animation mb-0" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum, nulla vel pellentesque consequat, ante nulla hendrerit arcu, ac tincidunt mauris lacus sed leo.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<section class="section section-height-5 bg-primary border-0 pt-5 m-0 appear-animation" data-appear-animation="fadeIn">
+    <div class="container">
+        <h1 class="mt-4 mt-lg-5" style="color:white;text-align:center;font-weight:bold;">Our Features</h1>
+        <div class="row mt-4 mt-lg-5">
+            @foreach (var item in Model.Features)
+            {
+                SoftwareImageDiv += 1;
+                if (SoftwareImageDiv % 2 == 0)
+                {
+
+                    <div class="process-step col-lg-1 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                        <img class="img-fluid" style="height:80px;width:80px;border-radius:50%;" src="@item.IconImage" />
+                    </div>
+                    <div class="process-step col-lg-5 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                        <div class="process-step-circle">
+                            <strong class="process-step-circle-content"></strong>
+                        </div>
+                        <div class="process-step-content">
+                            <h4 class="mb-1 text-5 font-weight-bold" style="color:white;">@item.Name</h4>
+                            <p class="mb-0" style="color:white;text-align:justify;">@Html.Raw(item.ShortDescription)</p>
+                        </div>
+                    </div>
+
+
+                }
+                else
+                {
+                    <div class="process-step col-lg-1 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                        <img class="img-fluid" style="height:80px;width:80px;border-radius:50%;" src="@item.IconImage" />
+                    </div>
+                    <div class="process-step col-lg-5 mb-5 mb-lg-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                        <div class="process-step-circle">
+                            <strong class="process-step-circle-content"></strong>
+                        </div>
+                        <div class="process-step-content">
+                            <h4 class="mb-1 text-5 font-weight-bold" style="color:white;">@item.Name</h4>
+                            <p class="mb-0" style="color:white;text-align:justify;">@Html.Raw(item.ShortDescription)</p>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+</section>
+
+
+
+<section class="section bg-color-grey-scale-1 border-0 pt-0 pt-md-5 m-0">
+    <div class="container">
+        <div class="row align-items-center justify-content-center pb-4 pb-lg-0">
+            <div class="col-lg-6 order-2 order-lg-1 pr-5 pt-4 pt-lg-0 mt-md-5 mt-lg-0 appear-animation" data-appear-animation="fadeInRightShorter">
+                <h2 class="font-weight-normal text-6 mb-3"><strong class="font-weight-extra-bold">Who</strong> We Are</h2>
+                <p style="margin-right:140px;text-align:justify;" class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id valorem ipsum dolor sit amet, consectetur adipiscinorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+                <a href="#" class="btn btn-dark font-weight-semibold btn-py-2 px-5">Our History</a>
+            </div>
+            <div class="col-9 col-lg-6 order-1 order-lg-2 scale-6 pb-5 pb-lg-0 mt-0 mt-md-4 mb-5 mb-lg-0">
+                <img class="img-fluid appear-animation" src="~/images/w2.jpg" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="300" data-plugin-options="{'accY': -400}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="margin-top:200px;" class="section section-primary border-0 mb-0 appear-animation" data-appear-animation="fadeIn" data-plugin-options="{'accY': -150}">
+    <div class="container">
+        <h1 style="color:white; text-align: center;">Powering businesses</h1>
+        <div class="row counters counters-sm pb-4 pt-3">
+            <div class="col-sm-6 col-lg-3 mb-5 mb-lg-0">
+                <div class="counter">
+                    <i class="icons icon-user text-color-light"></i>
+                    <strong class="text-color-light font-weight-extra-bold" data-to="30000" data-append="+">0</strong>
+                    <label class="text-4 mt-1 text-color-light ">Happy Clients</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 mb-5 mb-lg-0">
+                <div class="counter">
+                    <i class="icons icon-badge text-color-light"></i>
+                    <strong class="text-color-light font-weight-extra-bold" data-to="15">0</strong>
+                    <label class="text-4 mt-1 text-color-light">Years In Business</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 mb-5 mb-sm-0">
+                <div class="counter">
+                    <i class="icons icon-graph text-color-light"></i>
+                    <strong class="text-color-light font-weight-extra-bold" data-to="178">0</strong>
+                    <label class="text-4 mt-1 text-color-light">High Score</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="counter">
+                    <i class="icons icon-cup text-color-light"></i>
+                    <strong class="text-color-light font-weight-extra-bold" data-to="352">0</strong>
+                    <label class="text-4 mt-1 text-color-light">Cups of Coffee</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-color-grey section-height-3 border-0 mt-5 mb-0">
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+            @foreach (var item in Model.Software)
+            {
+                SoftwareFeaturesIndex += 1;
+                if (SoftwareFeaturesIndex % 2 == 0) { 
+
+                        <div class="row align-items-center pt-5 pb-3 appear-animation" data-appear-animation="fadeInRightShorter">
+                          <div class="col-md-8 pr-md-5 mb-5 mb-md-0">
+                             <h2 class="font-weight-normal text-6 mb-3" style="text-align:justify;"><strong class="font-weight-extra-bold">@item.Title</strong></h2>
+                              <p class="text-4" style="text-align:justify;">@Html.Raw(item.ShortDescription)</p>
+
+                            </div>
+                            <div class="col-md-4 px-5 px-md-3">
+                                <a href="/ClientView/CategoryWiseSoftware/@item.Id"><img class="img-fluid scale-2 my-4" src="@item.Image" alt="style switcher" /></a>   
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row align-items-center pt-4 appear-animation" data-appear-animation="fadeInLeftShorter">
+                            <div class="col-md-4 mb-4 mb-md-0">
+                                @*<img class="img-fluid scale-2 pr-5 pr-md-0 my-4" src="@item.Image" alt="layout styles" />*@
+                                <a href="/ClientView/CategoryWiseSoftware/@item."><img class="img-fluid scale-2 my-4" src="@item.Image" alt="style switcher" /></a>
+                            </div>
+                            <div class="col-md-8 pl-md-5">
+                                <h2 class="font-weight-normal text-6 mb-3" style="text-align:justify;"><strong class="font-weight-extra-bold">@item.Title</strong></h2>
+                                <p class="text-4" style="text-align:justify;">@Html.Raw(item.ShortDescription)</p>
+                            </div>
+                        </div>
+
+                        
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="section section-height-3 section-background border-0 m-0 appear-animation" data-appear-animation="fadeIn" style="background-image: url(img/parallax/parallax-10.jpg); background-size: cover; background-position: center;">
+    <div class="container">
+        <div class="row">
+            <div class="col appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+
+                <div class="owl-carousel owl-theme nav-bottom rounded-nav" data-plugin-options="{'items': 1, 'loop': false}">
+                    <div>
+                        <div class="testimonial testimonial-style-2 testimonial-with-quotes testimonial-quotes-dark mb-0">
+                            <div class="testimonial-author">
+                                <img src="img/clients/client-1.jpg" class="img-fluid rounded-circle" alt="">
+                            </div>
+                            <blockquote>
+                                <p class="text-color-dark text-5 line-height-5 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum tortor. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce ante tellus, convallis non consectetur sed, pharetra nec ex.</p>
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <p><strong class="font-weight-extra-bold text-2">- John Smith. Okler</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="testimonial testimonial-style-2 testimonial-with-quotes testimonial-quotes-dark mb-0">
+                            <div class="testimonial-author">
+                                <img src="img/clients/client-1.jpg" class="img-fluid rounded-circle" alt="">
+                            </div>
+                            <blockquote>
+                                <p class="text-color-dark text-5 line-height-5 mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum tortor. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <p><strong class="font-weight-extra-bold text-2">- John Smith. Okler</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+

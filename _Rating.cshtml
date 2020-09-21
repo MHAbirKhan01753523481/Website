@@ -1,0 +1,176 @@
+﻿
+@model BlogComment
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <form style="color:black;" id="replyUpdateRating">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <div id="rateYo" class="rating"></div>
+                
+                    </div>
+                </div>
+             
+            </div>
+            <div class="row">
+               
+                <div class="col-md-12">
+
+                    <div class="form-group">
+                        <label asp-for="RName"></label>
+                        <input type="text" asp-for="RName" class="form-control" />
+                        <span asp-validation-for="RName" class="text-danger"></span>
+
+                    </div>
+                </div>
+                @*<div class="col-md-6">
+
+                    <div class="form-group">
+                        <label asp-for="REmail"></label>
+                        <input type="text" asp-for="REmail" class="form-control" />
+                        <span asp-validation-for="REmail" class="text-danger"></span>
+                    </div>
+                </div>*@
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="form-group">
+                        <label asp-for="Review"></label>
+                        <textarea class="form-control" asp-for="Review"></textarea>
+                        <span asp-validation-for="Review" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" id="reviewRatingBtn">Submit</button>
+                        <button type="button" class="btn btn-danger" id="closeBtn" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
+
+<link href="~/css/jquery.rateyo.min.css" rel="stylesheet" />
+
+<script src="~/js/jquery.rateyo.min.js"></script>
+<script>
+      $(function () {
+
+          $("#closeBtn").click(function () {
+
+              $(".panel").hide().slideUp("slow");
+
+          });
+
+
+              $("#rateYo").rateYo({
+                 rating: 1,
+                  fullStar: true,
+                  spacing: "5px",
+                  onChange: function (rating, rateYoInstance) {
+                      $(this).next().text(rating);
+
+                       $("body").on("click", "#reviewRatingBtn", function (e) {
+                           e.preventDefault();
+
+                           let Data = {
+                               Id:replayHiddenIndex,
+                               Rating: rating,
+                              // REmail: $("#REmail").val().trim(),
+                               RName: $("#RName").val().trim(),
+                               Review: $("#Review").val().trim()
+                              
+                           };
+                          // RatingUpdate(Data);
+                           console.log(Data);
+                            $.ajax({
+                               url: "/ClientView/UpdateRatingReview",
+                               type: "POST",
+                               data: Data,
+                               dataType:"JSON",
+                                success: function (response) {
+                                 $("form")[0].reset();
+                                $("#Reply-editFormDiv").html(response);
+                                    $("#reply-editModal").modal('hide');
+                                    location.reload(true);
+                               }
+                        });
+                     });
+
+                }
+            });
+
+      });
+
+ //   const RatingUpdate = (Data) => {
+
+                       
+   
+ //}
+
+
+
+    //$(".fa-star").click(function () {
+    //    if ($(this).hasClass("checked")) {
+
+    //        $(this).removeClass("checked");
+
+    //    }
+    //    else {
+    //        $(this).addClass("checked");
+    //    }
+
+    //});
+
+    //$("body").on("click", "#reviewRatingBtn", function (e) {
+    //    e.preventDefault();
+
+    //    let count = 0;
+
+    //    $(".fa-star").each(function () {
+
+    //            if ($(this).hasClass("checked")) {
+    //                count++;
+    //            }
+    //    });
+
+    //     let Data = {
+             
+    //         Rating: count,
+    //         Review:$("#Review").val()
+    //      };
+    //       UpdateRatingReview(Data);
+
+    //});
+
+    //const UpdateRatingReview = (Data) => {
+
+    //    $.ajax({
+
+    //        url: "/ClientView/UpdateRatingReview",
+    //        type: "POST",
+    //        data: Data,
+    //        success: function (response) {
+
+    //            $("#Reply-editFormDiv").html(response);
+
+    //        }
+
+    //    });
+
+
+    //}
+
+</script>

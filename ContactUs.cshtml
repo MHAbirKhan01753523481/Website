@@ -1,0 +1,336 @@
+﻿@model ContactUsViewModel
+
+@{
+    ViewData["Title"] = "ContactUs";
+
+    char[] DescriptionArray = Model.companyInfo.Description.ToCharArray();
+    string lengthArrayDescription = string.Empty;
+
+    int categoryIndex = 0;
+
+
+}
+
+<div id="contractFomDiv"></div>
+
+<div role="main" class="main">
+
+    <div class="slider-with-overlay">
+
+        <div class="slider-container rev_slider_wrapper" style="height: 670px;">
+            <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider data-plugin-options="{'delay': 9000, 'gridwidth': 1170, 'gridheight': 670, 'disableProgressBar': 'on', 'responsiveLevels': [4096,1200,992,500], 'navigation' : {'arrows': { 'enable': false }, 'bullets': {'enable': true, 'style': 'bullets-style-1', 'h_align': 'center', 'v_align': 'bottom', 'space': 7, 'v_offset': 70, 'h_offset': 0}}}">
+                <ul>
+                    @foreach (var item in Model.bannerList)
+                    {
+
+
+                        <li class="slide-overlay slide-overlay-level-7" data-transition="fade">
+                            <img src="@item.Image"
+                                 alt=""
+                                 data-bgposition="center center"
+                                 data-bgfit="cover"
+                                 data-bgrepeat="no-repeat"
+                                 class="rev-slidebg">
+
+                            @*<div class="tp-caption"
+                data-x="['left','left','center','center']" data-hoffset="['145','145','-150','-240']"
+                data-y="center" data-voffset="['-50','-50','-50','-75']"
+                data-start="1000"
+                data-transform_in="x:[-300%];opacity:0;s:500;"
+                data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt=""></div>*@
+
+                            <div class="tp-caption text-color-light font-weight-normal"
+                                 data-x="['left','left','center','center']" data-hoffset="['200','200','0','0']"
+                                 data-y="center" data-voffset="['-50','-50','-50','-75']"
+                                 data-start="700"
+                                 data-fontsize="['22','22','22','40']"
+                                 data-lineheight="['25','25','25','45']"
+                                 data-transform_in="y:[-50%];opacity:0;s:500;">DO YOU NEED A NEW</div>
+
+                            @*<div class="tp-caption d-none d-md-block"
+                data-frames='[{"delay":3800,"speed":500,"frame":"0","from":"opacity:0;x:10%;","to":"opacity:1;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                data-x="['left','left','center','center']" data-hoffset="['365','365','80','135']"
+                data-y="center" data-voffset="['-33','-33','-33','-55']"><img src="img/slides/slide-blue-line.png" alt=""></div>*@
+
+                            @*<div class="tp-caption"
+                data-x="['left','left','center','center']" data-hoffset="['440','440','150','240']"
+                data-y="center" data-voffset="['-50','-50','-50','-75']"
+                data-start="1000"
+                data-transform_in="x:[300%];opacity:0;s:500;"
+                data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt=""></div>*@
+
+                            @*<h1 class="tp-caption font-weight-extra-bold text-color-light negative-ls-2"
+                    data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                    data-x="['left','left','center','center']" data-hoffset="['152','152','0','0']"
+                    data-y="center"
+                    data-fontsize="['50','50','50','90']"
+                    data-lineheight="['55','55','55','95']"
+                    data-letterspacing="-1">
+                    WEB DESIGN?
+                </h1>*@
+
+                            @*<div class="tp-caption font-weight-light"
+                data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                data-x="['left','left','center','center']" data-hoffset="['166','166','0','0']"
+                data-y="center" data-voffset="['40','40','40','80']"
+                data-fontsize="['18','18','18','50']"
+                data-lineheight="['20','20','20','55']"
+                style="color: #b5b5b5;">Check out our options and features</div>*@
+
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div class="slider-contact-form">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-lg-6">
+                        <div class="slider-contact-form-wrapper bg-primary rounded p-5 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="2000">
+                            <div class="row">
+                                <div class="col text-center">
+                                    <h2 class="font-weight-light text-color-light text-6 mb-2">Get a <strong>Quote</strong></h2>
+                                    <p class="text-color-light opacity-7 font-weight-light mb-4 px-5">Enter your personal info below and let’s start talking about your new website or customized project.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <form id="contactForm" class="contact-form form-style-2">
+                                        <div class="contact-form-success alert alert-success d-none mt-4" id="contactSuccess">
+                                            <strong>Success!</strong> Your message has been sent to us.
+                                        </div>
+                                        <div class="contact-form-error alert alert-danger d-none mt-4" id="contactError">
+                                            <strong>Error!</strong> There was an error sending your message.
+                                            @*<span class="mail-error-message text-1 d-block" id="mailErrorMessage"></span>*@
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-lg-6">
+                                                <input type="text" value="" class="form-control" asp-for="Name" placeholder="Your Name..." required>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <input type="tel" value="" class="form-control" asp-for="Email" placeholder="Your Email..." required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-lg-6">
+                                                <input type="text" value="" class="form-control" asp-for="Phone" placeholder="Your Phone..." required>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <input type="tel" value="" class="form-control" asp-for="Subject" placeholder="Your Subject...">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col mb-4">
+                                                <textarea maxlength="5000" rows="4" class="form-control" asp-for="Message" placeholder="Your Message..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col text-center">
+                                                <input type="submit" value="SUBMIT" id="contactFormSubmitBtn" class="btn btn-dark px-4 py-3" data-loading-text="Loading...">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="home-intro" id="home-intro">
+        <div class="container">
+
+            <div class="row align-items-center">
+                <div class="col text-center">
+                    <p class="mb-0">
+                        The fastest way to grow your business with the leader in <span class="highlighted-word highlighted-word-animation-1 text-color-primary font-weight-semibold text-5">Technology</span>
+                        <span>Check out our options and features included.</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row pt-4 appear-animation" data-appear-animation="fadeInUpShorter">
+            <div class="col-lg-7 pr-lg-5">
+                <h2 class="font-weight-normal line-height-1">A place where amazing things <strong class="font-weight-extra-bold">Get Done!</strong></h2>
+                <p class="lead">@Html.Raw(Model.companyInfo.Description)</p>
+
+                @*@if (DescriptionArray.Length > 250)
+                    {
+                        for (int i = 0; i < 250; i++)
+                        {
+                            lengthArrayDescription += DescriptionArray[i];
+                        }
+
+                    }*@
+
+
+                <div class="row pt-4 my-5">
+
+                    @foreach (var item in Model.Services)
+                    {
+                        categoryIndex += 1;
+                        @if (categoryIndex % 2 == 0)
+                        {
+                            <div class="col-sm-6">
+                                <div class="feature-box feature-box-style-2">
+                                    <div class="feature-box-icon">
+                                        <i class="@item.IconClassName text-color-primary"></i>
+                                    </div>
+                                    <div class="feature-box-info">
+                                        <h4 class="font-weight-bold text-4 mb-0">@item.Name</h4>
+                                        <p class="mb-4">@Html.Raw(item.ShortDescription)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-sm-6">
+                                <div class="feature-box feature-box-style-2">
+                                    <div class="feature-box-icon">
+                                        <i class="@item.IconClassName text-color-primary"></i>
+                                    </div>
+                                    <div class="feature-box-info">
+                                        <h4 class="font-weight-bold text-4 mb-0">@item.Name</h4>
+                                        <p class="mb-4">@Html.Raw(item.ShortDescription)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+            </div>
+            <div class="col-lg-5">
+                <h4 class="font-weight-normal line-height-1 mb-5">Our <strong class="font-weight-extra-bold">Location</strong></h4>
+
+                <!-- Google Maps - Go to the bottom of the page to change settings and map location. -->
+                <div id="googlemaps" class="google-map small"></div>
+
+                <ul class="list list-icons list-icons-style-3 mt-5">
+                    <li><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> @Model.companyInfo.Address</li>
+                    <li><i class="fas fa-phone"></i> <strong>Phone:</strong>@Model.about.CallUsNumber</li>
+                    <li><i class="far fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mail@example.com">@Model.companyInfo.Email</a></li>
+                </ul>
+
+                <hr class="my-5">
+
+                <h4 class="font-weight-normal">Business <strong class="font-weight-extra-bold">Hours</strong></h4>
+                <ul class="list list-icons list-dark mt-4">
+                    <li><i class="far fa-clock"></i>Office Time : @Model.about.BusinessHourseTime</li>
+                    <li><i class="far fa-clock"></i>Total Hours : @Model.about.BusinessHourse</li>
+                    <li><i class="far fa-clock"></i>Closed : @Model.about.ClosedTime</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts{
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#contactForm").validate({
+                ignore: false,
+                rules: {
+                    name: {
+                        required: true,
+                        Name: true,
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+
+                    },
+
+                   
+                },
+                 messages: {
+                 name: "Please specify your name",
+                 email: {
+                   required: "We need your email address to contact you",
+                   email: "Your email address must be in the format of name@domain.com"
+                }
+              }
+
+            });
+
+
+
+            $("body").on("click", "#contactFormSubmitBtn", function (e) {
+                e.preventDefault();
+
+                if ($("#contactForm").valid()) {
+
+                    contactSaveForm();
+
+                }
+                else {
+                    toastr.error('Please fill up the form with valid data.', 'Validation Failed!');
+                    
+                }
+
+            });
+
+        });
+
+        const contactSaveForm = () => {
+
+
+            let contactData = {
+                Name: $("#Name").val(),
+                Email: $("#Email").val(),
+                Phone: $("#Phone").val(),
+                Subject: $("#Subject").val(),
+                Message: $("#Message").val()
+
+            };
+
+            //  let contactData = objectifyForm($(this).serializeArray());
+            console.log(contactData);
+
+            $.ajax({
+                url: "/ClientView/SaveContact",
+                type: "POST",
+                data: contactData,
+                dataType: "JSON",
+                success: function (response) {
+
+                    $("form")[0].reset();
+
+                    $("#contractFomDiv").html(response);
+                    if (response == true) {
+
+                        toastr.success("Save Contract Data", "Success !!!");
+                        location.reload(true);
+                    }
+                    else {
+                        toastr.error("Error Something", "Error");
+                    }
+
+                }
+
+            });
+
+
+        }
+
+
+
+    </script>
+
+
+}

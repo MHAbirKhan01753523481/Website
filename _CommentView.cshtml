@@ -1,0 +1,109 @@
+﻿@model BlogsVM
+
+  
+        <form id="contactFormBlogs" class="contact-formComment p-4 rounded bg-color-grey">
+            <select asp-for="BlogId" asp-items="ViewBag.BlogId" style="display:none;">
+               
+            </select>
+
+           
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label asp-for="FullName"></label>
+                            <input asp-for="FullName" type="text" class="form-control" value="" required/>
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" type="text" class="form-control" value="" required/>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="Comment"></label>
+                            <textarea class="form-control" asp-for="Comment"></textarea>
+
+                            <span asp-validation-for="Comment" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" id="replyCommentBtn">Submit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                    </div>
+
+          
+</form>
+   
+
+
+
+<script>
+
+     $("#contactFormBlogs").on("submit", function (e) {
+
+            e.preventDefault();
+
+         let blogcomment = objectifyForm($(this).serializeArray());
+         console.log(blogcomment);
+         $.ajax({
+
+                url: "/ClientView/BlogsCommentCreate",
+                type: "POST",
+                data: blogcomment,
+                success: function (response) {
+                   console.log(response);
+                    $("form")[0].reset();
+
+                    $("#contact-formLoad").html(response);
+                 
+                    location.reload(response);
+                  
+                },
+             error: function (response) {
+                 console.log(response);
+                    alert("Error");
+                }
+            });
+
+        });
+
+
+
+
+     //$("#contactFormBlogs").on("submit", function (e) {
+
+     //       e.preventDefault();
+
+     //       let blogcomment = objectifyForm($(this).serializeArray());
+
+     //       $.ajax({
+
+     //           url: "/ClientView/BlogsCommentCreate",
+     //           type: "POST",
+     //           data: blogcomment,
+
+     //           success: function (response) {
+
+     //               alert("working");
+
+     //              // $("#contactFormBlogs").reset();
+
+     //               $("#contact-formLoad").html(response);
+     //           },
+     //           error: function (response) {
+     //               alert("Error");
+     //           }
+     //       });
+
+     //   });
+
+</script>

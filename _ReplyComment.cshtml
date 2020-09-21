@@ -1,0 +1,71 @@
+﻿@model BlogComment
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <form  style="color:gray;" id="replyUpdate">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="hidden" asp-for="Id"/>
+                    <div class="form-group">
+                        <label asp-for="RName"></label>
+                        <input asp-for="RName" type="text" class="form-control" value="" />
+                        <span asp-validation-for="RName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="REmail"></label>
+                        <input asp-for="REmail" type="text" class="form-control" value=""/>
+                        <span asp-validation-for="REmail" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Reply"></label>
+                        <textarea class="form-control" asp-for="Reply"></textarea>
+                     
+                        <span asp-validation-for="Reply" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" id="replyCommentBtn">Submit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/ReplyComment/commentUpdate.js"></script>
+<script>
+
+    $("#replyUpdate").on("submit", function (e) {
+        e.preventDefault();
+
+        alert("work");
+        let replyItem = objectifyForm($(this).serializeArray());
+
+        $.ajax({
+            url: "/ClientView/UpdateComment",
+            type: "POST",
+            data:replyItem,
+            success: function (response) {
+
+                $("#Reply-editFormDiv").html(response);
+               
+            }
+
+        });
+
+    });
+
+     
+
+
+</script>
+
+

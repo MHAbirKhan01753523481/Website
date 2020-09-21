@@ -1,0 +1,47 @@
+﻿@model List<Product>
+
+<div class="" style="padding: 0; width: 100%; margin: auto">
+    <div class="row">
+        <div class="col">
+            <div class="blog-posts">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        string image = string.IsNullOrEmpty(item.Image) ? "/images/no_image-preview.png" : item.Image;
+                        <div class="col-md-4 col-lg-3">
+                            <article class="post post-medium border-0 pb-0 mb-2 rx-product-card" style="background-color: #fff;">
+                                <div class="post-image" style="height: 230px; width: 60%; margin: auto; background-color: #fff;">
+                                    <a href="/ClientView/Product/@item.Id">
+                                        <img src="@item.Image" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" style="height: 100%; width: 100%; margin: auto; object-fit: contain;" />
+                                    </a>
+                                </div>
+
+                                <div class="post-content"  style="background-color: #fff; padding: 0px 15px 10px 15px; border-top: 1px solid #eee;">
+                                    <h2 class="font-weight-semibold text-3 line-height-6 mt-3 mb-2"><a href="/ClientView/Product/@item.Id">@item.Name</a></h2>
+                                    <p class="text-2" style="height: 80px; overflow: hidden;">@item.ShortDescription</p>
+                                    <div class="post-meta">
+                                        <span><i class="far fa-user"></i> Category <a href="/ClientView/Products/@item.ProductCategoryId">@item.ProductCategory.Name</a> </span>
+                                        <span class="d-block mt-2"><a href="/ClientView/Product/@item.Id" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+    .rx-product-card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+        .rx-product-card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+</style>

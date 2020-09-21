@@ -1,0 +1,67 @@
+﻿
+@model OurTeamVM
+
+<div role="main" class="main">
+    <div class="container pt-5">
+        <div class="row py-4 mb-2">
+            <div class="col-md-7 order-2">
+                <div class="overflow-hidden">
+                    <h2 class="text-color-dark font-weight-bold text-8 mb-0 pt-0 mt-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="300">@Model.Team.Department.Name</h2>
+                </div>
+                <div class="overflow-hidden mb-3">
+                    <p class="font-weight-bold text-primary text-uppercase mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="500">@Model.Team.Designation.Name</p>
+                </div>
+                <p class="pb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">@Html.Raw(Model.Team.Description)</p>
+                <hr class="solid my-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900">
+                <div class="row align-items-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">
+                    <div class="col-lg-6">
+                        <a href="/ClientView/TeamView/@Model.Team.Id" class="btn btn-modern btn-dark mt-3">Get In Touch</a>
+                        <a href="http://www.gmail.com/" class="btn btn-modern btn-primary mt-3">Hire Me</a>
+                    </div>
+                    <div class="col-sm-6 text-lg-right my-4 my-lg-0">
+                        <strong class="text-uppercase text-1 mr-3 text-dark">follow me</strong>
+                        <ul class="social-icons float-lg-right">
+                            <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div  class="col-md-5 order-md-2 mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInRightShorter">
+                  <img style="height:430px;width:400px;" src="@Model.Team.Image" class="img-fluid mb-2" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<section class="section section-height-3 bg-color-grey m-0 border-0">
+    <div class="container py-4">
+        <h2 class="font-weight-normal text-color-dark text-center text-7 pb-2 pt-5">Our  Team Member <strong class="font-weight-extra-bold"> @Model.Team.Department.Name </strong> Department</h2>
+        <div class="row">
+            <div class="owl-carousel owl-theme mb-0 pt-2" data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 2}, '768': {'items': 4}, '992': {'items': 4}, '1200': {'items': 4}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': true}">
+                @foreach (var item in Model.Teams)
+                {
+                    <div class="col-sm-12 col-md-12 mb-4 mb-md-0">
+                        <article>
+                            <div class="row">
+                                <div class="col">
+                                    <a href="/ClientView/TeamViewDetails/@item.Id" class="text-decoration-none">
+                                      <img style="height:120px;width:120px;" src="@item.Image" class="img-fluid hover-effect-2 mb-3" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-color-primary text-2 mb-1">@item.Name</h6>
+                                    <h6 class="text-color-primary text-2 mb-1">@item.Department.Name</h6>
+                                    <h6 class="text-color-dark opacity-7 mb-3">@item.Designation.Name</h6>
+                                    @*<a href="" class="read-more text-color-primary font-weight-semibold text-2">VIEW MORE <i class="fas fa-chevron-right text-3 ml-2"></i></a>*@
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

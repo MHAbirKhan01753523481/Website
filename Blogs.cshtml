@@ -1,0 +1,268 @@
+﻿@model BlogsVM
+
+@{ 
+    
+
+}
+    <div role="main" class="main">
+
+        <div class="slider-container bg-color-grey rev_slider_wrapper" style="height: 80vh;">
+            <div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider data-plugin-options="{'sliderLayout': 'fullscreen', 'fullScreenOffsetContainer': '#header', 'delay': 9000, 'gridwidth': [1410,1110,930,690], 'gridheight': 700, 'disableProgressBar': 'on', 'responsiveLevels': [4096,1422,1182,974], 'navigation' : {'arrows': { 'enable': true, 'style': 'metis arrows-primary arrows-rounded' }, 'bullets': {'enable': false}}}">
+                <ul>
+                    <li data-transition="fade">
+                        <img src="@Model.singleblogs.Image"
+                             alt=""
+                             data-bgposition="center center"
+                             data-bgfit="cover"
+                             data-bgrepeat="no-repeat"
+                             class="rev-slidebg">
+                        <div class="tp-caption overlay d-none d-sm-block d-lg-none overlay-show overlay-color-secondary overlay-op-8"
+                             data-frames='[{"delay":0}]'
+                             data-x="center"
+                             data-y="center"
+                             data-height="1000"
+                             data-width="100%"
+                             data-basealign="slide"></div>
+
+                        @*<h1 class="tp-caption font-weight-extra-bold text-color-dark line ws-normal"
+                            data-frames='[{"delay":1500,"speed":400,"frame":"0","from":"opacity:0;x:50%;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-x="['left','left','left','center']" data-hoffset="['145','145','0','0']"
+                            data-y="center" data-voffset="['-85','-85','-85','-85']"
+                            data-width="['500','500','500','500']"
+                            data-fontsize="['48','48','48','48']"
+                            data-lineheight="['55','55','55','55']"
+                            data-textAlign="['left','left','left','center']">
+                            @Model.singleblogs.Title
+                        </h1>*@
+                        @*<div class="tp-caption font-weight-light text-color-dark opacity-7 ws-normal"
+                             data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2300,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                             data-x="['left','left','left','center']" data-hoffset="['145','145','0','0']"
+                             data-y="center" data-voffset="['0','0','0','0']"
+                             data-width="['900','900','900','900']"
+                             data-fontsize="['18','18','18','22']"
+                             data-lineheight="['26','26','26','26']"
+                             data-textAlign="['left','left','left','center']">Our new Project Start.</div>*@
+
+                        @*<a class="tp-caption d-inline-flex align-items-center btn btn-primary font-weight-bold rounded"
+                           href="#"
+                           data-frames='[{"delay":3000,"speed":2000,"frame":"0","from":"y:50%;opacity:0;","to":"y:0;o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                           data-x="['left','left','left','center']" data-hoffset="['145','145','0','0']"
+                           data-y="center" data-voffset="['65','65','65','65']"
+                           data-paddingtop="['16','16','16','24']"
+                           data-paddingbottom="['16','16','16','24']"
+                           data-paddingleft="['30','30','30','30']"
+                           data-paddingright="['15','15','15','15']"
+                           data-fontsize="['13','13','13','18']"
+                           data-lineheight="['20','20','20','22']">GET STARTED NOW <i class="fas fa-arrow-right ml-4 pl-1 mr-2 text-4"></i></a>*@
+                    </li>
+                    <li data-transition="fade">
+                        <img src="@Model.lastImage.Image"
+                             alt=""
+                             data-bgposition="center center"
+                             data-bgfit="cover"
+                             data-bgrepeat="no-repeat"
+                             class="rev-slidebg">
+                        <div class="tp-caption overlay d-none d-sm-block d-lg-none overlay-show overlay-color-secondary overlay-op-8"
+                             data-frames='[{"delay":0}]'
+                             data-x="center"
+                             data-y="center"
+                             data-height="1000"
+                             data-width="100%"
+                             data-basealign="slide"></div>
+
+                        @*<h1 class="tp-caption font-weight-extra-bold text-color-dark line ws-normal"
+                            data-frames='[{"delay":1500,"speed":400,"frame":"0","from":"opacity:0;x:50%;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                            data-x="['left','left','left','center']" data-hoffset="['145','145','0','0']"
+                            data-y="center" data-voffset="['-85','-85','-85','-85']"
+                            data-width="['500','500','500','500']"
+                            data-fontsize="['48','48','48','48']"
+                            data-lineheight="['55','55','55','55']"
+                            data-textAlign="['left','left','left','center']">
+                            @Model.lastImage.Title
+                        </h1>*@
+                        @*<div class="tp-caption font-weight-light text-color-dark opacity-7 ws-normal"
+                             data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2300,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                             data-x="['left','left','left','center']" data-hoffset="['145','145','0','0']"
+                             data-y="center" data-voffset="['0','0','0','0']"
+                             data-width="['900','900','900','900']"
+                             data-fontsize="['18','18','18','22']"
+                             data-lineheight="['26','26','26','26']"
+                             data-textAlign="['left','left','left','center']">Creation Our Blogs.</div>*@
+
+                        @*<a class="tp-caption d-inline-flex align-items-center btn btn-primary font-weight-bold rounded"
+                           href="#"
+                           data-frames='[{"delay":3000,"speed":2000,"frame":"0","from":"y:50%;opacity:0;","to":"y:0;o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                           data-x="['left','left','left','center']" data-hoffset="['145','145','0','0']"
+                           data-y="center" data-voffset="['65','65','65','65']"
+                           data-paddingtop="['16','16','16','24']"
+                           data-paddingbottom="['16','16','16','24']"
+                           data-paddingleft="['30','30','30','30']"
+                           data-paddingright="['15','15','15','15']"
+                           data-fontsize="['13','13','13','18']"
+                           data-lineheight="['20','20','20','22']">GET STARTED NOW <i class="fas fa-arrow-right ml-4 pl-1 mr-2 text-4"></i></a>*@
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div style="background-color:dodgerblue;" class="home-intro home-intro-quaternary" id="home-intro">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col">
+                        <p class="mb-0">
+                            The fastest way to grow your business with the leader in <span class="highlighted-word highlighted-word-animation-1 highlighted-word-animation-1-light text-color-dark font-weight-semibold text-5">Technology</span>
+                            <span>Check out our options and features included.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container py-4">
+            <div class="row">
+                <div class="col">
+                    <div class="blog-posts">
+                        <div class="row">
+
+                            @foreach (var item in Model.Blogs)
+                            {
+                                char[] DescriptionArray = item.Description.ToCharArray();
+                                string shortDescription = string.Empty;
+
+                                if (DescriptionArray.Length > 250)
+                                {
+                                    for (int i = 0; i < 250; i++)
+                                    {
+                                        shortDescription += DescriptionArray[i];
+                                    }
+                                }
+                                else
+                                {
+                                    for (int i = 0; i <= 250; i++)
+                                    {
+                                        shortDescription += DescriptionArray[i];
+                                    }
+                                }
+
+                                <div class="col-md-4 col-lg-4">
+                <article class="post post-medium border-0 pb-0 mb-5">
+                    <div class="post-image" style="height: 230px; width: 100%; margin: auto;">
+                        <a href="/ClientView/BlogsDetails/@item.Id">
+                            <img src="@item.Image" style="height: 100%; width: 100%; object-fit: contain;" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                        </a>
+                    </div>
+                    <div class="post-content" style="background-color: #f7f7f7; padding: 5px 20px 15px 20px;">
+                        <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2"><a href="#">@item.Title</a></h2>
+                        <p style="text-align:justify;">@Html.Raw(shortDescription) <span class="d-block mt-2 "><a href="/ClientView/BlogsDetails/@item.Id" class=" text-1"><strong>More . . . .</strong></a></span></p>
+                        <div class="post-meta">
+                            <span><i class="far fa-user"></i>Created By <a  href="/ClientView/BlogsDetails/@item.Id">@item.Creator</a> </span>
+                            <span><i class="far fa-folder"></i> <a href="/ClientView/BlogsDetails/@item.Id">@item.Date.ToString("dd/mm/yyyy")</a></span>
+                            @*<span><a href="#">@item.Date.ToString("mm")</a></span>*@
+                            <span><i class="far fa-comments"></i> <a href="#"></a></span>
+                            <span class="d-block mt-2"><a href="/ClientView/BlogsDetails/@item.Id" class="btn btn-xs btn-primary text-1 text-uppercase">Read More</a></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <iframe style="height:300px;width:100%;" class="embed-responsive-item" src="@Model.singleblogs.VideoUrl" allowfullscreen></iframe>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        @*<div role="main" class="main">
+
+
+            <div class="container py-4">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="blog-posts">
+
+                            @foreach (var item in Model.Blogs)
+                            {
+                                char[] DescriptionArray = item.Description.ToCharArray();
+                                string shortDescription = string.Empty;
+
+                                if (DescriptionArray.Length > 550)
+                                {
+                                    for (int i = 0; i < 550; i++)
+                                    {
+                                        shortDescription += DescriptionArray[i];
+                                    }
+                                }
+                                else
+                                {
+                                    for (int i = 0; i <= 200; i++)
+                                    {
+                                        shortDescription += DescriptionArray[i];
+                                    }
+                                }
+                                    <article class="post post-large">
+
+                                        <div class="post-image">
+                                            <div class="lightbox" data-plugin-options="{'delegate': 'a', 'type': 'image', 'gallery': {'enabled': true}, 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
+                                                <div class="row mx-0">
+                                                    <div class="col-6 col-md-12 p-0">
+                                                        <a href="/ClientView/BlogsDetails/@item.Id">
+                                                            <span class="thumb-info thumb-info-no-borders thumb-info-centered-icons">
+                                                                <span class="thumb-info-wrapper">
+                                                                    <img src="@item.Image" class="img-fluid" alt="" style="height:400px;width:1200px;" />
+                                                                    <span class="thumb-info-action">
+                                                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fas fa-plus text-dark"></i></span>
+                                                                    </span>
+                                                                </span>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="post-date">
+                                            <span class="day">8</span>
+                                            <span class="month">Jan</span>
+                                        </div>
+                                        <div class="post-content">
+                                            <h2 class="font-weight-semibold text-6 line-height-1 mb-3"><a href="/ClientView/BlogsDetails/@item.Id">@item.Title</a></h2>
+                                            <div class="post-meta">
+                                                <p style="text-align:justify;" id="description">@Html.Raw(shortDescription)</p>
+                                              
+                                                <span><i class="far fa-user"></i> By <a href="/ClientView/BlogsDetails/@item.Id">@item.Creator</a> </span>
+                                                <span><i class="far fa-folder"></i> <a href="/ClientView/BlogsDetails/@item.Id">@item.Date.ToString("dd")</a></span>
+                                                <span><a href="#">@item.Date.ToString("mm")</a></span>
+                                                <span><i class="far fa-comments"></i> <a href="/ClientView/BlogsDetails/@item.Id"></a></span>
+
+                                                <span class=" d-block d-sm-inline-block float-sm-right mt-3 mt-sm-0"><a href="/ClientView/BlogsDetails/@item.Id" class="btn btn-xs btn-primary text-1 text-uppercase readBtn">Read More</a></span>
+                                            </div>
+                                        </div>
+
+                                    </article>
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>*@
+
+        
+  </div>

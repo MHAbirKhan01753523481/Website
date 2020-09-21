@@ -1,0 +1,107 @@
+﻿@model List<Product>
+
+
+<div class="" style="padding: 0; width: 80%; margin: auto">
+    <h2 class="font-weight-normal text-color-dark text-center text-7 pb-1 pt-1">Our <strong class="font-weight-extra-bold">Products</strong></h2>
+    <section class="section border-0 mt-0 mb-2" style="padding: 10px 0px 20px 0px;">
+        <div style="padding: 0; width: 100%; margin: auto">
+            <div class="row">
+                <div class="col pt-2 text-center text-lg-left text-center">
+                    <h3 class="text-3 text-dark m-0 font-weight-bold d-inline-block pr-4 mb-3">BROWSE ALL CATEGORIES:</h3>
+                    <div class="d-inline-block">
+                        <a href="#" class="btn py-3 px-4 text-1 text-dark btn-light bg-transparent text-uppercase font-weight-bold mr-2 mb-2 productCategory" data-id="0">Latest</a>
+                        @foreach (var item in Model.GroupBy(x => x.ProductCategoryId))
+                        {
+                            int productCategoryId = item.Select(x => x.ProductCategoryId).FirstOrDefault();
+                            string productCategory = item.Select(x => x.ProductCategory.Name).FirstOrDefault();
+                            <a href="#" class="btn py-3 px-4 text-1 text-dark btn-light bg-transparent text-uppercase font-weight-bold mr-2 mb-2 productCategory" data-id="@productCategoryId">@productCategory</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row">
+        @if (Model.Count() > 0)
+        {
+            <div id="products" style="width: 100%;">
+                <div class="owl-carousel owl-theme mb-0 pt-2" data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 2}, '768': {'items': 4}, '992': {'items': 4}, '1200': {'items': 4}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': false}">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-12 col-md-12 mb-4 mb-md-0">
+                            <article class="post post-medium border-0 pb-0 mb-2 rx-product-card" style="background-color: #fff;">
+                                <div class="post-image" style="height: 230px; width: 60%; margin: auto; background-color: #fff;">
+                                    <a href="/ClientView/Product/@item.Id">
+                                        <img src="@item.Image" style="height: 100%; width: 100%; margin: auto; object-fit: contain;" class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="@item.Name" />
+                                    </a>
+                                </div>
+
+
+                                <!-- Product Layout Section -->
+
+                                @*<div class="post-content">*@
+
+
+                                <div class="post-content" style="background-color: #fff; padding: 0px 15px 10px 15px; border-top: 1px solid #eee;">
+
+                                    <h2 class="font-weight-semibold text-3 line-height-6 mt-3 mb-2"><a href="/ClientView/Product/@item.Id">@item.Name</a></h2>
+                                    <p class="text-2" style="height: 80px; overflow: hidden;">@item.ShortDescription</p>
+                                    <div class="post-meta">
+                                        <span><i class="far fa-user"></i> Category <a href="/ClientView/Products/@item.ProductCategoryId">@item.ProductCategory.Name</a> </span>
+                                        <span class="d-block mt-2"><a href="/ClientView/Product/@item.Id" class="btn btn-xs btn-light text-1 text-uppercase">Read More</a></span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    <a class="btn btn-primary btn-with-arrow mb-2" href="/ClientView/Products/" style="float: right; margin-top: 30px; margin-right: 10px;">See more<span><i class="fas fa-chevron-right"></i></span></a>
+</div>
+
+
+<style>
+    .rx-product-card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        cursor: pointer;
+    }
+
+        .rx-product-card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+</style>
+
+
+<script>
+    (function () {
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            items: 4,
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 1000,
+            autoplayHoverPause: true,
+            dots: false
+        });
+
+        $(".productCategory").on("click", function (e) {
+            e.preventDefault();
+
+            let data = { id: $(this).attr("data-id") };
+
+            $("#products").html(loader);
+
+            $.ajax({
+                url: "/ClientView/GetCategoryWiseProducts/",
+                type: "GET",
+                data: data,
+                success: function (response) {
+                    $("#products").html(response);
+                }
+            })
+        })
+    })();
+</script>

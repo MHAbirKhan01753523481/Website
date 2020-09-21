@@ -1,0 +1,35 @@
+﻿@model List<Client>
+
+<div class="row py-1 my-1">
+    <div class="col">
+        <h2 class="font-weight-normal text-color-dark text-center text-7 pb-5">Our Honourable <strong class="font-weight-extra-bold">Clients</strong></h2>
+        <div class="owl-carousel owl-theme mb-0 pt-3">
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <div style="padding: 0px 25px; height: 100px; width: 185px;">
+<<<<<<< HEAD
+                        <img class="img-fluid" src="@item.Logo" alt="" style="height: 100%; width: 100%; object-fit: contain;" />
+=======
+                        <img class="img-fluid opacity-6" src="@item.Logo" alt="" style="height: 100%; width: 100%; object-fit: contain;" />
+>>>>>>> 9248af4f1be374d35031cb5c62395480caa23fdf
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        items: 7,
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 1000,
+        autoplayHoverPause: true,
+        dots: false
+    });
+</script>

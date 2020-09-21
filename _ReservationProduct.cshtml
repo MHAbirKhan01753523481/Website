@@ -1,0 +1,72 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "_ReservationProduct";
+}
+
+<div class="masonry-loader masonry-loader-loaded">
+    <div class="row products product-thumb-info-list" data-plugin-masonry="" data-plugin-options="{'layoutMode': 'fitRows'}" style="position: relative; height: auto;">
+
+        @foreach (var item in Model)
+        {
+
+            @*<div class="col-sm-6 col-lg-4 product product-effect">
+                <span class="product-thumb-info border-0 product-effect-span">
+
+                    <a class="CardItems add-to-cart-product bg-color-primary " ProductId="@item.Id" PrdName="@item.Name" PrdPrice="@item.PurchasePrice" Images="@item.Image"><span class=" text-4">Add To Card</span></a>
+
+                    <span class="product-thumb-info-content product-thumb-info-content pl-0 bg-color-light productHoverBorderNone">
+                        <a style="padding: 0px 10px;">
+                            <h4 class="text-4 text-primary">@item.Name</h4>
+                            <span class="price">
+                                <del><span class="amount">@item.RetailPrice</span></del>
+                                <ins><span class="amount text-dark font-weight-semibold">@item.PurchasePrice</span></ins>
+                            </span>
+                        </a>
+                    </span>
+                </span>
+            </div>*@
+            <div class="col-sm-6 col-lg-4 product">
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <a>
+                            <span style="background-color:orangered;" class="onsale">Sale!</span>
+                        </a>
+                        <span>
+                            @*<a class="CardItems add-to-cart-product bg-color-primary " ProductId="@item.Id" data-name="@item.Name" data-price="@item.PurchasePrice" data-image="@Model.singleblogs.Image">
+                                <span class="text-uppercase text-1">Add to Cart</span>
+                            </a>*@
+                            <a>
+                                <span class="product-thumb-info-image">
+                                    <img class="img-fluid" src="@item.Image">
+                                </span>
+                            </a>
+
+
+                            <h4 class="text-4 text-primary" data-name="@item.Name">@item.Name</h4>
+                            <span class="price">
+                                @*<del><span class="amount" data-price="@item.PurchasePrice">@item.PurchasePrice</span></del>*@
+                                <ins><span class="amount text-dark font-weight-semibold">$ @item.PurchasePrice</span></ins>
+                            </span>
+                            <div>
+
+                                <input class="form-control" id="@item.Id" ProductId="@item.Id" PrdName="@item.Name" PrdPrice="@item.PurchasePrice" Images="@item.Image" type="number" value="0"/>
+                                @* Modifies *@
+
+                            </div>
+
+                            <br />
+                            <button style="width:100%;" ProductId="@item.Id" PrdName="@item.Name" PrdPrice="@item.PurchasePrice" Images="@item.Image" type="button" class="CardItems btn btn-outline-danger "><i class="fas fa-cart-plus"></i>Add To Card </button>
+
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="bounce-loader"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
+</div>
+
+<script src="~/js/Card/card.js"></script>

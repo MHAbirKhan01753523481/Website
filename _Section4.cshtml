@@ -1,0 +1,27 @@
+﻿@model List<HostingPlan>
+
+<h2 class="font-weight-normal text-color-dark text-center text-7 pb-2">Our <strong class="font-weight-extra-bold">Hosting Plans</strong></h2>
+<div class="rx mb-1 mt-1 pb-5 pt-1">
+    @if (Model.Count() > 0)
+    {
+        foreach (var item in Model)
+        {
+            <div class="rx_box">
+                <div class="rx_content">
+                    <h3 style="margin-bottom: 35px;">
+                        <span style="border-bottom: 1px solid #eee; padding-bottom: 7px;">@item.Name</span>
+                    </h3>
+                    <p>Amount of space: @item.Space</p>
+                    <p>Bandwidth: @item.Bandwidth</p>
+                    <p>Domain: @item.Domain</p>
+                    <p>Subdomain: @item.SubDomain</p>
+                    <p>Alias: @item.Alias</p>
+                    <p>Email: @item.Email</p>
+                    <p>CPanel: @item.CPanel</p>
+                    <h3 style="margin: 22px 0px;">@item.YearlyPrice &#2547; / @item.PriceUnit</h3>
+                    <a href="#"><b>Get @item.Name</b></a>
+                </div>
+            </div>
+        }
+    }
+</div>
